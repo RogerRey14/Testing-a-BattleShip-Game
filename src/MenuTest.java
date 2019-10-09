@@ -1,10 +1,9 @@
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
-import org.junit.After;
-import org.junit.Before;
 import org.junit.jupiter.api.Test;
 
 class MenuTest {
@@ -16,8 +15,7 @@ class MenuTest {
 
 	
 	@Test
-	void testShowMenu() {
-		
+	void testShowMenu() {		
 		final ByteArrayOutputStream contenidoSalida = new ByteArrayOutputStream();
         System.setOut(new PrintStream(contenidoSalida));
         Menu testMenu = new Menu();

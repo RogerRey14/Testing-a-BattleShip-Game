@@ -2,8 +2,8 @@
 public class BattleShip {
 
 	public static void main(String[] args) {
-		
-		Menu menu = new Menu();
+		Game game = new Game();
+		game.start();
 		System.exit(0);
 	}
 

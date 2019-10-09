@@ -1,37 +1,23 @@
-import java.util.Scanner;
-
 public class Menu {
 
-	boolean exit = false;
-
-	Menu() {
-
+	public Menu() {
+		initMessage();
+		showMenu();
+	}
+	
+	private void initMessage() {
 		System.out.println("Hello Batterlship Arcade Testing Game!");
-		this.showMenu();
-		this.optionMenu();
-
 	}
 
 	public void showMenu() {
-		System.out.print("---Batterlship---\n1- Jugar\n2- Exit\n");
-		
+		System.out.print("---Batterlship---\n1- Jugar\n2- Exit\n");		
 	}
-
-	public void optionMenu() {
-		
-		while (!exit) {
-			Scanner scan = new Scanner(System.in);
-			int opcio = scan.nextInt();
-			switch (opcio) {
-			case 1:
-				System.out.println("Jugando");
-				break;
-			case 2:
-				System.out.println("Exit");
-				exit=true;
-				break;
-			}
-		}
-
+	
+	public void playing() {
+		System.out.println("Jugando");
+	}
+	
+	public void exit() {
+		System.out.println("Exit");
 	}
 }
