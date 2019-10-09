@@ -5,12 +5,12 @@ public class Menu {
 		showMenu();
 	}
 	
-	private void initMessage() {
-		System.out.println("Hello Batterlship Arcade Testing Game!");
+	public void initMessage() {
+		System.out.print("Hello Battleship Arcade Testing Game!\n");
 	}
 
 	public void showMenu() {
-		System.out.print("---Batterlship---\n1- Jugar\n2- Exit\n");		
+		System.out.print("---Battleship---\n1- Jugar\n2- Exit\n");		
 	}
 	
 	public void playing() {
