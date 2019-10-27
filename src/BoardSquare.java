@@ -5,26 +5,42 @@ public class BoardSquare {
 	private boolean visible;
 	
 	public BoardSquare(int row, ColumnLetter column, SquareContent content) {
-
+		this.row = row;
+		this.column = column;
+		this.content = content;
 	}
 	
 	public int getRow() {
-		return 0;
+		return row;
 	}
 	
 	public ColumnLetter getColumn() {
-		return ColumnLetter.J;
+		return column;
 	}
 	
 	public SquareContent getContent() {
-		return SquareContent.SHIP;
+		return content;
 	}
 	
 	public boolean isVisible() {
-		return false;
+		return visible;
 	}
 	
 	public void toogleVisible() {
-		
+		visible = !visible;
+	}
+	
+	@Override
+	public String toString() {
+		String str = "";
+		if(visible) {
+			switch(content) {
+				case WATER:
+					str += "~";
+				case SHIP:
+					str += "^";
+			}
+		}
+		return "("+row+", "+column+")";
 	}
 }
