@@ -1,85 +1,52 @@
 public class Board {
-	private int shipsCount;
-	private int[][] matrix; 
+	
+	private char[][] matrix;
 
 	public Board() {
-		shipsCount = 0;
-		matrix = new int[10][10]; 
+		matrix = new char[10][10];
 		init();
 	}
-
-	private void init() {
-
-	}
-
-	void show() {
-
-	}
-
-	public int getShipsCount() {
-		return -1;
-	}
-
-	public void setShipsCount(int shipsCount) {
-		
-	}
-
-	public int[][] getBoard() {
-		return matrix;
-	}
-
-	public void setBoard(int[][] board) {
 	
+	private void init() {
+		for(int i=0; i<matrix.length; i++) {
+			for(int j=0; j<matrix[i].length; j++) {
+				matrix[i][j] = '-';
+			}
+		}
+	}
+	
+	public void show() {
+		ManagerIO io = new ManagerIO();
+		for(int i=0; i<matrix.length; i++) {
+			for(int j=0; j<matrix[i].length; j++) {
+				io.out(matrix[i][j]);
+			}
+			io.out("\n");
+		}
 	}
 
-	public void insertShip(int shipSize) {
-
-
+	public boolean isWinner() {
+		int count = 0;
+		for(int i=0; i<matrix.length; i++) {
+			for(int j=0; j<matrix[i].length; j++) {
+				if(matrix[i][j] == 'H') {
+					count++;
+				}
+			}
+		}
+		return count == 20;
 	}
 
-	public void insertRandomShip(int tamañoBarcoActual) {
-
-	}
-
-	private void shipLimit(Position position) {
-
-
-	}
-
-	private void insertShip(Position position) {
-
-	}
-
-	private boolean isCorrectOrientation(Position position) {
-		return false;
-	}
-
-	private boolean isEmpty(Position position) {
-		return false;
-	}
-
-	private int readOrientation() {
-		return -1;
-	}
-
-	public Position readPosition() {
-		return new Position(0,0);
-	}
-
-	public Position generatePosition() {
-		return new Position(0,0);
-	}
-
-	private int generateOrientation() {
-		return -1;
-	}
-
-	public void shoot(Player bot) {
-
-	}
-
-	public void shootBot(Player player) {
-
+	public boolean isFull() {
+		int count = 0;
+		for(int i=0; i<matrix.length; i++) {
+			for(int j=0; j<matrix[i].length; j++) {
+				if(matrix[i][j] == 'B') {
+					count++;
+				}
+			}
+		}
+		return count == 20;
 	}
 
 }

@@ -1,6 +1,5 @@
-public class Player {
+public abstract class Player {
 	private String name;
-	private int type;
 	
 	public Player(String name, int type) {		
 	}
@@ -23,5 +22,30 @@ public class Player {
 	
 	public String shoot(int row, int column) {
 		return "";
+	}
+
+	public void putShip(Board board) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void putShip(Board board) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void putShip(Board board) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void shoot(Board board) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void sayWin() {
+		// TODO Auto-generated method stub
+		
 	}
 }
