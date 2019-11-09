@@ -5,19 +5,16 @@ public class Turn {
 		num = 0;
 	}
 
-	public int next() {
-		// TODO Auto-generated method stub
-		return 0;
+	public void next() {
+		num = notCurrent();
 	}
 
 	public int current() {
-		// TODO Auto-generated method stub
-		return 0;
+		return num;
 	}
 
 	public int notCurrent() {
-		// TODO Auto-generated method stub
-		return 0;
+		return (num+1)%2;
 	}
 
 }
