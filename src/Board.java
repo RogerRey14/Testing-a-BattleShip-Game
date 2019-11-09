@@ -1,26 +1,85 @@
-import java.util.ArrayList;
-
 public class Board {
-	private int COLS = 10;
-	private int ROWS = 10;
-	ArrayList<ArrayList<BoardSquare>> matrix = new ArrayList<ArrayList<BoardSquare>>();
-	private BoardSquare matrix2[][] = new BoardSquare[COLS][ROWS];
-	
+	private int shipsCount;
+	private int[][] matrix; 
+
 	public Board() {
-		matrix2[0][0] = new BoardSquare(0, ColumnLetter.A, SquareContent.EMPTY);
-		System.out.println(matrix2[0][0]);
+		shipsCount = 0;
+		matrix = new int[10][10]; 
+		init();
 	}
+
+	private void init() {
+
+	}
+
+	void show() {
+
+	}
+
+	public int getShipsCount() {
+		return -1;
+	}
+
+	public void setShipsCount(int shipsCount) {
+		
+	}
+
+	public int[][] getBoard() {
+		return matrix;
+	}
+
+	public void setBoard(int[][] board) {
 	
-	public boolean shoot(int row, ColumnLetter column) {
+	}
+
+	public void insertShip(int shipSize) {
+
+
+	}
+
+	public void insertRandomShip(int tamañoBarcoActual) {
+
+	}
+
+	private void shipLimit(Position position) {
+
+
+	}
+
+	private void insertShip(Position position) {
+
+	}
+
+	private boolean isCorrectOrientation(Position position) {
 		return false;
 	}
-	
-	private int columnToNumber(ColumnLetter column) {
-		return 0;
+
+	private boolean isEmpty(Position position) {
+		return false;
 	}
-	
-	@Override
-	public String toString() {
-		return "";
+
+	private int readOrientation() {
+		return -1;
 	}
+
+	public Position readPosition() {
+		return new Position(0,0);
+	}
+
+	public Position generatePosition() {
+		return new Position(0,0);
+	}
+
+	private int generateOrientation() {
+		return -1;
+	}
+
+	public void shoot(Player bot) {
+
+	}
+
+	public void shootBot(Player player) {
+
+	}
+
 }

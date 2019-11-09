@@ -1,23 +1,28 @@
 public class Menu {
-
+	private boolean playing;
+	private int option;
+	private int numOptions;
+	
 	public Menu() {
-		initMessage();
-		showMenu();
+		playing = true;
+		option = -1;
+		numOptions = 0;
 	}
 	
-	public void initMessage() {
-		System.out.print("Hello Battleship Arcade Testing Game!\n");
+	public int getOption() {
+		return 0;
+	}
+	
+	public int getNumOptions() {
+		return 0;
+	}
+	
+	public boolean getPlaying() {
+		return false;
 	}
 
 	public void showMenu() {
-		System.out.print("---Battleship---\n1- Jugar\n2- Exit\n");		
+
 	}
-	
-	public void playing() {
-		System.out.println("Jugando");
-	}
-	
-	public void exit() {
-		System.out.println("Exit");
-	}
+
 }
