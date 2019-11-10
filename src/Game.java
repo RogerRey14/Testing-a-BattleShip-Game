@@ -1,11 +1,9 @@
 public class Game {
-	private Menu menu;
 	private Player[] players;
 	private Board[] boards;
 	private Turn turn;
 	
 	public Game() {
-		menu = new Menu();
 		players = new Player[2];
 		players[0] = new Human();
 		players[1] = new Bot();
@@ -17,9 +15,40 @@ public class Game {
 		turn = new Turn();
 	}
 	
-	public void play() {
+	public void start() {
+		menu();
+		switch(getMenuOption()) {
+			case 1:
+				play();
+				break;
+			case 2:
+				//TODO
+				break;
+			case 3:
+				exit();
+				break;
+		}
+		play();
+	}
+	
+	private void menu() {
+		ManagerIO io = new ManagerIO();
+		io.out("1. Jugar\n");
+		io.out("2. Opciones\n");
+		io.out("3. Salir\n");
+	}
+	
+	private int getMenuOption() {
+		int option;
+		ManagerIO io = new ManagerIO();
 		do {
-			menu.show();
+			option = io.inInt();
+		}while(option < 1 && option > 3);
+		return option;
+	}
+	
+	private void play() {
+		do {
 			boards[0].show();
 			boards[1].show();
 			if(!boards[0].isFull() && !boards[2].isFull()) {
@@ -32,8 +61,12 @@ public class Game {
 		players[turn.notCurrent()].sayWin();
 	}
 	
-	public void stop() {
+	private void options() {
+		
 	}
 	
-	
+	private void exit() {
+		System.exit(0);
+	}
+
 }

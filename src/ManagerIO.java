@@ -8,6 +8,7 @@ public class ManagerIO {
 	}	
 
 	public int inInt() {
+		scanner = new Scanner(System.in);
 		return scanner.nextInt();
 	}
 	

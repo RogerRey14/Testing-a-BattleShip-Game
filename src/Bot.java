@@ -1,4 +1,6 @@
-
-public class Bot extends Player {
-
+class Bot extends Player {
+	
+	public Bot(String name) {
+		super(name);
+	}
 }

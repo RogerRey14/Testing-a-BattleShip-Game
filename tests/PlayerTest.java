@@ -6,24 +6,21 @@ class PlayerTest {
 
 	@Test
 	void testConstruct() {
-		Player player = new Player("Player 1", 1);
+		Player player = new Human("Player 1");
 		assertEquals(player.getName(), "Player 1");
-		assertEquals(player.getName(), "Player 1");
-		assertEquals(player.getType(), 1);
 		
-		Player bot = new Player("Bot", 2);
-		assertEquals(bot.getName(), "Bot");
-		assertEquals(bot.getType(), 2);
+		Player bot = new Bot("Bot");
+		assertEquals(player.getName(), "Bot");
 	}
 	
 	@Test
 	void testWinner() {
-		Player player = new Player("Player 1", 1);
+		Player player = new Human("Player 1");
 		assertFalse(player.isWinner());
-		player.insertShips();
+		Board board = new Board();
 		for(int i = 0; i < 10; i++) {
 			for(int j = 0; j < 10; j++) {
-				player.shoot(i, j);
+				player.shoot(board);
 			}
 		}
 		assertTrue(player.isWinner());
