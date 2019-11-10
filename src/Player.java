@@ -41,4 +41,14 @@ public abstract class Player {
 	public void sayWin() {
 		
 	}
+
+	public void putShip(Board board) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void shoot(Board board) {
+		// TODO Auto-generated method stub
+		
+	}
 }

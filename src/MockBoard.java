@@ -67,9 +67,7 @@ class MockBoard implements GameBoard{
 		return str;
 	}
 	
-	public char[][] getBoard() {
-		return matrix;
-	}
+
 	
 	/* 
 	 * Simulates an atack at coordinate (9,9)
@@ -90,5 +88,41 @@ class MockBoard implements GameBoard{
 	public boolean isFull() {
 		//do nothing
 		return true;
+	}
+
+	@Override
+	public int[][] getBoard() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int getNumberShips() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void insertShip(Position position) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void positionShip(int shipSize) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void atack(GameBoard board) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void atackRandom(GameBoard board) {
+		// TODO Auto-generated method stub
+		
 	}
 }
