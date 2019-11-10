@@ -1,11 +1,11 @@
 public abstract class Player {
 	private String name;
-	
-	public Player() {		
-	}
+	private GameBoard ownBoard = new Board();
+	private GameBoard enemyBoard = new Board();
 	
 	public Player(String name) {
 		this.name = name;
+		positionShips();
 	}
 	
 	public String getName() {
@@ -13,21 +13,32 @@ public abstract class Player {
 	}
 	
 	public boolean isWinner() {
-		return false;
+		return enemyBoard.getNumberShips() == 0;
 	}
 	
-	public void putShip(GameBoard board) {
-		// TODO Auto-generated method stub
-		
+	public GameBoard getOwnBoard() {
+		return ownBoard;
 	}
 
-	public void shoot(GameBoard board) {
-		// TODO Auto-generated method stub
-		
+	public void setOwnBoard(GameBoard board) {
+		this.ownBoard = board;
 	}
 
+	public GameBoard getEnemyBoard() {
+		return enemyBoard;
+	}
+
+	public void setEnemyBoard(GameBoard board) {
+		this.enemyBoard = board;
+	}
+
+	public void positionShips() {
+	}
+
+	public void atack() {
+	}
+	
 	public void sayWin() {
-		// TODO Auto-generated method stub
 		
 	}
 }

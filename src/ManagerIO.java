@@ -16,7 +16,7 @@ public class ManagerIO {
 		System.out.print(data);
 	}
 	
-	public void out(char data) {
+	public void out(int data) {
 		System.out.print(data);
 	}
 }
