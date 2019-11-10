@@ -5,8 +5,8 @@ public class Game {
 	
 	public Game() {
 		players = new Player[2];
-		players[0] = new Human();
-		players[1] = new Bot();
+		players[0] = new Human("Player 1");
+		players[1] = new Bot("Beep Beep");
 		boards = new Board[4];
 		boards[0] = new Board();
 		boards[1] = new Board();

@@ -16,12 +16,12 @@ public abstract class Player {
 		return false;
 	}
 	
-	public void putShip(Board board) {
+	public void putShip(GameBoard board) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	public void shoot(Board board) {
+	public void shoot(GameBoard board) {
 		// TODO Auto-generated method stub
 		
 	}

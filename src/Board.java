@@ -1,10 +1,14 @@
-public class Board {
+public class Board implements GameBoard {
 	
 	private char[][] matrix;
 
 	public Board() {
 		matrix = new char[10][10];
 		init();
+	}
+	
+	public char[][] getBoard() {
+		return matrix;
 	}
 	
 	private void init() {
@@ -47,6 +51,10 @@ public class Board {
 			}
 		}
 		return count == 20;
+	}
+	
+	public void atack(Player player) {
+		
 	}
 
 }
