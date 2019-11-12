@@ -2,10 +2,6 @@ package com.battelship.test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
-
-import org.junit.Before;
 import org.junit.Test;
 
 import com.battelship.Jugador;
@@ -18,7 +14,7 @@ public class JugadorTest {
 
 
 	/*
-	 * Test comprueba que se crea un Jugador con nombre y tipo. Tipo Humano = 1
+	 * Test Caja Negra comprueba que se crea un Jugador con nombre y tipo. Tipo Humano = 1
 	 */
 	@Test
 	public void testCreateJugador() {
@@ -30,7 +26,7 @@ public class JugadorTest {
 	}
 
 	/*
-	 * Test comprueba que se crea un Jugador con nombre y tipo. Tipo RandomIA = 2
+	 * Test Caja Negra comprueba que se crea un Jugador con nombre y tipo. Tipo RandomIA = 2
 	 */
 	@Test
 	public void testCreateRandomIA() {
