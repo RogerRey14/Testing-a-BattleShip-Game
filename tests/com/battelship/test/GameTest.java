@@ -1,39 +1,26 @@
 package com.battelship.test;
 
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
+import org.junit.Test;
 
-import org.junit.jupiter.api.BeforeEach;
+import com.battelship.Game;
 
 public class GameTest {
-	private PrintStream systemOutOriginal;
-	public ByteArrayOutputStream resultado;
+
 
 	/*
-	 * Función que se ejecuta antes de cada @Test inicializa y setea un outputstream
-	 * para recoger los datos printados en consola
-	 */
-	@BeforeEach
-	public void beforeAll() {
-		systemOutOriginal = System.out;
-		resultado = new ByteArrayOutputStream();
-		System.setOut(new PrintStream(resultado));
-	}
-
-	/*
-	 * Test
+	 * Test que inicializa el juego y llama a la funcion main
 	 * 
 	 */
 	
-	/*//TODO
 	@Test
-	public void testFullGame() {
+	public void testStartGame() {
 	
 		String[] args = null;
+		new Game();
 		Game.main(args);
 		
 
-	}*/
+	}
 	
 	
 	
