@@ -12,9 +12,9 @@ import com.battelship.utils.Constants;
  */
 public class JugadorTest {
 
-
 	/*
-	 * Test Caja Negra comprueba que se crea un Jugador con nombre y tipo. Tipo Humano = 1
+	 * Test Caja Negra comprueba que se crea un Jugador con nombre y tipo. Tipo
+	 * Humano = 1
 	 */
 	@Test
 	public void testCreateJugador() {
@@ -26,7 +26,8 @@ public class JugadorTest {
 	}
 
 	/*
-	 * Test Caja Negra comprueba que se crea un Jugador con nombre y tipo. Tipo RandomIA = 2
+	 * Test Caja Negra comprueba que se crea un Jugador con nombre y tipo. Tipo
+	 * RandomIA = 2
 	 */
 	@Test
 	public void testCreateRandomIA() {
@@ -47,7 +48,7 @@ public class JugadorTest {
 		assertEquals("Barco Posicionado!", jugadorTest.posicionarBarco());
 
 	}
-	
+
 	/*
 	 * Test Posicionar Barco RandomIA
 	 */
@@ -58,7 +59,7 @@ public class JugadorTest {
 		assertEquals("Barco Posicionado Aleatoriamente!", randomIATest.posicionarBarco());
 
 	}
-	
+
 	/*
 	 * Test Atacar Barco Jugador
 	 */
@@ -69,7 +70,7 @@ public class JugadorTest {
 		assertEquals("Atacando!", jugadorTest.atacar());
 
 	}
-	
+
 	/*
 	 * Test Atacar Barco RandomIA
 	 */
@@ -80,5 +81,5 @@ public class JugadorTest {
 		assertEquals("Atacando Aleatoriamente!", randomIATest.atacar());
 
 	}
-	
+
 }

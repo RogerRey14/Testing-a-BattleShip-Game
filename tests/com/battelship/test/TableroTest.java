@@ -23,7 +23,6 @@ public class TableroTest {
 
 	public static ByteArrayOutputStream resultado;
 
-
 	/*
 	 * Función que se ejecuta antes de cada @Test inicializa y setea un outputstream
 	 * para recoger los datos printados en consola
@@ -41,7 +40,6 @@ public class TableroTest {
 	@Test
 	public void testCreateTablero() {
 
-		
 		new Tablero();
 		assertTrue(resultado.toString().contains("Tablero Iniciado!"));
 
@@ -96,10 +94,9 @@ public class TableroTest {
 		assertTrue(tablero[x][y] == 1);
 	}
 
-	
-
 	/*
-	 * Test comprueba si puedes insertar a partir de una orientacion y el tamaño del barco
+	 * Test comprueba si puedes insertar a partir de una orientacion y el tamaño del
+	 * barco
 	 * 
 	 */
 	@Test
@@ -108,7 +105,7 @@ public class TableroTest {
 		Posicion posicionTest = new Posicion(0, 0);
 		posicionTest.setOrientacion(0);
 		posicionTest.setTamaño(2);
-		
+
 		Tablero tableroTest = new Tablero();
 		assertTrue(tableroTest.sePuedeInsertarOrientacion(posicionTest));
 		posicionTest.setOrientacion(1);
@@ -119,7 +116,6 @@ public class TableroTest {
 		assertTrue(tableroTest.sePuedeInsertarOrientacion(posicionTest));
 		posicionTest.setOrientacion(4);
 		assertNull(tableroTest.sePuedeInsertarOrientacion(posicionTest));
-		
 
 	}
 
@@ -144,7 +140,7 @@ public class TableroTest {
 	public void testGenerarOrientacion() {
 
 		Tablero tableroTest = new Tablero();
-		assertEquals(Posicion.class,tableroTest.generarOrientacion().getClass());
+		assertEquals(Posicion.class, tableroTest.generarOrientacion().getClass());
 		assertNotEquals(tableroTest.generarOrientacion(), tableroTest.generarOrientacion());
 
 	}
@@ -157,15 +153,14 @@ public class TableroTest {
 	public void testGenerarPosicion() {
 
 		Tablero tableroTest = new Tablero();
-		assertEquals(Posicion.class,tableroTest.generaPosicion().getClass());
+		assertEquals(Posicion.class, tableroTest.generaPosicion().getClass());
 		assertNotEquals(tableroTest.generaPosicion(), tableroTest.generaPosicion());
 
 	}
-	
+
 	/*
-	 * Test insertar un barco con su correspondiente tamaño.
-	 * Para simpliar no tendremos encuentra la orientacion (Temporal)
-	 * y no comprobamos los margenes
+	 * Test insertar un barco con su correspondiente tamaño. Para simpliar no
+	 * tendremos encuentra la orientacion (Temporal) y no comprobamos los margenes
 	 */
 	@Test
 	public void testInsertBarco() {
@@ -173,7 +168,7 @@ public class TableroTest {
 		Posicion posicionTest = new Posicion(0, 0);
 		posicionTest.setOrientacion(0);
 		posicionTest.setTamaño(2);
-		
+
 		Tablero tableroTest = new Tablero();
 		tableroTest.insertarBarco(posicionTest);
 		int[][] tablero = tableroTest.getTablero();

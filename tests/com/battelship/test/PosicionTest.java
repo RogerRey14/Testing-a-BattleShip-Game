@@ -95,7 +95,7 @@ public class PosicionTest {
 
 	/*
 	 * Función que devuelve la salida del sistema a su estado original despues de
-	 * cada 
+	 * cada
 	 */
 	private void restoreSystemOutStream() {
 		System.setOut(systemOutOriginal);
