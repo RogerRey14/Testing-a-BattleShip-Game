@@ -61,6 +61,11 @@ public class PosicionTest {
 		assertEquals(posicion.getOrientacionString(), "No tiene orientacion");
 	}
 
+	/*
+	 * Test de caja negra del metodo Posicion.toString() que muestra por el terminal
+	 * los valores de Posicion. Particiones equivalentes: (-inf, 0), [0, 3], [4,
+	 * inf) frontera 0, 3 limites: -1, 1, 3, 4
+	 */
 	@Test
 	public void testPrintPosicion() {
 
