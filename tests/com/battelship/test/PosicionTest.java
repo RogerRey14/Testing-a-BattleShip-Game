@@ -93,6 +93,10 @@ public class PosicionTest {
 		assertEquals(posicion.toString(), "Posicion [x=1, y=1, orientacion=No tiene orientacion]");
 	}
 
+	/*
+	 * Función que devuelve la salida del sistema a su estado original despues de
+	 * cada 
+	 */
 	private void restoreSystemOutStream() {
 		System.setOut(systemOutOriginal);
 	}
