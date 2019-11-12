@@ -6,7 +6,7 @@ public class Jugador {
 	private String nombre;
 
 	public Jugador(int tipo, String nombre) {
-		// TODO Auto-generated constructor stub
+
 		this.tipo = tipo;
 		this.nombre = nombre;
 	}
@@ -17,6 +17,23 @@ public class Jugador {
 
 	public String getNombre() {
 		return nombre;
+	}
+
+	public String posicionarBarco() {
+
+		if (this.tipo == 1) {
+			return "Barco Posicionado!";
+		} else
+			return "Barco Posicionado Aleatoriamente!";
+
+	}
+
+	public String atacar() {
+		if (this.tipo == 1) {
+			return "Atacando!";
+		} else
+			return "Atacando Aleatoriamente!";
+
 	}
 
 }
