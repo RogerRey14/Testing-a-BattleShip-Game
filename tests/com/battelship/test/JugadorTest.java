@@ -64,7 +64,7 @@ public class JugadorTest {
 	}
 	
 	/*
-	 * Test Posicionar Barco Jugador
+	 * Test Atacar Barco Jugador
 	 */
 	@Test
 	public void testAtacarJugador() {
@@ -75,7 +75,7 @@ public class JugadorTest {
 	}
 	
 	/*
-	 * Test Posicionar Barco RandomIA
+	 * Test Atacar Barco RandomIA
 	 */
 	@Test
 	public void testAtacarRandomIA() {
