@@ -1,14 +1,19 @@
 package com.battelship.test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.Random;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import com.battelship.Posicion;
 import com.battelship.Tablero;
 
 /*
@@ -17,7 +22,7 @@ import com.battelship.Tablero;
 public class TableroTest {
 
 	public static ByteArrayOutputStream resultado;
-	private PrintStream systemOutOriginal;
+
 
 	/*
 	 * Función que se ejecuta antes de cada @Test inicializa y setea un outputstream
@@ -36,8 +41,9 @@ public class TableroTest {
 	@Test
 	public void testCreateTablero() {
 
+		
 		new Tablero();
-		assertEquals("Tablero Iniciado!", resultado.toString());
+		assertTrue(resultado.toString().contains("Tablero Iniciado!"));
 
 	}
 
@@ -54,90 +60,128 @@ public class TableroTest {
 	}
 
 	/*
-	 * Test 
-	 * 	 
+	 * Test comprueba que se inserta correctamente una posicion en el Tablero
+	 * 
 	 */
 	@Test
 	public void testInsertarPosicion() {
-		Tablero tableroTest = new Tablero();
-		tableroTest.insertarPosicion();
-		
 
+		Posicion posicionTest = new Posicion(0, 0);
+		posicionTest.setOrientacion(0);
+
+		Tablero tableroTest = new Tablero();
+		tableroTest.insertarPosicion(posicionTest);
+		int[][] tablero = tableroTest.getTablero();
+
+		assertTrue(tablero[0][0] == 1);
+		assertFalse(tablero[0][1] == 1);
+		assertFalse(tablero[1][0] == 1);
 	}
-	
+
 	/*
-	 * Test 
-	 * 	 
+	 * Test que comprueba la insercion de una posicion aleatoria
+	 * 
 	 */
 	@Test
 	public void testInsertPosicionRandom() {
+
+		Random rn = new Random();
 		Tablero tableroTest = new Tablero();
-		tableroTest.insertarPosicionRandom();
-		
+		int x = rn.nextInt(10) + 1;
+		int y = rn.nextInt(10) + 1;
+		Posicion testPosicion = new Posicion(x, y);
+		tableroTest.insertarPosicionRandom(testPosicion);
+		int[][] tablero = tableroTest.getTablero();
 
+		assertTrue(tablero[x][y] == 1);
 	}
-	
-	/*
-	 * Test 
-	 * 	 
-	 */
-	@Test
-	public void testInsertBarco() {
 
-		Tablero tableroTest = new Tablero();
-		tableroTest.insertarBarco();
-
-	}
 	
+
 	/*
-	 * Test 
-	 * 	 
+	 * Test comprueba si puedes insertar a partir de una orientacion y el tamaño del barco
+	 * 
 	 */
 	@Test
 	public void testSePuedeInsertarOrientacion() {
 
+		Posicion posicionTest = new Posicion(0, 0);
+		posicionTest.setOrientacion(0);
+		posicionTest.setTamaño(2);
+		
 		Tablero tableroTest = new Tablero();
-		tableroTest.sePuedeInsertarOrientacion();
+		assertTrue(tableroTest.sePuedeInsertarOrientacion(posicionTest));
+		posicionTest.setOrientacion(1);
+		assertTrue(tableroTest.sePuedeInsertarOrientacion(posicionTest));
+		posicionTest.setOrientacion(2);
+		assertTrue(tableroTest.sePuedeInsertarOrientacion(posicionTest));
+		posicionTest.setOrientacion(3);
+		assertTrue(tableroTest.sePuedeInsertarOrientacion(posicionTest));
+		posicionTest.setOrientacion(4);
+		assertNull(tableroTest.sePuedeInsertarOrientacion(posicionTest));
+		
 
 	}
-	
+
 	/*
-	 * Test 
-	 * 	 
+	 * Test
+	 * 
 	 */
 	@Test
 	public void testProtecionBarco() {
 
 		Tablero tableroTest = new Tablero();
 		tableroTest.protecionBarco();
-
+		assertTrue(resultado.toString().contains("Protecion Activada"));
 
 	}
-	
+
 	/*
-	 * Test 
-	 * 	 
+	 * Test
+	 * 
 	 */
 	@Test
 	public void testGenerarOrientacion() {
 
 		Tablero tableroTest = new Tablero();
-		tableroTest.generarOrientacion();
-
+		assertEquals(Posicion.class,tableroTest.generarOrientacion().getClass());
+		assertNotEquals(tableroTest.generarOrientacion(), tableroTest.generarOrientacion());
 
 	}
-	
+
 	/*
-	 * Test 
-	 * 	 
+	 * Test genera posiciones X-Y aleatorias entre 10 y 1
+	 * 
 	 */
 	@Test
 	public void testGenerarPosicion() {
 
 		Tablero tableroTest = new Tablero();
-		tableroTest.generarPosicion();
+		assertEquals(Posicion.class,tableroTest.generaPosicion().getClass());
+		assertNotEquals(tableroTest.generaPosicion(), tableroTest.generaPosicion());
 
 	}
+	
+	/*
+	 * Test insertar un barco con su correspondiente tamaño.
+	 * Para simpliar no tendremos encuentra la orientacion (Temporal)
+	 * y no comprobamos los margenes
+	 */
+	@Test
+	public void testInsertBarco() {
 
+		Posicion posicionTest = new Posicion(0, 0);
+		posicionTest.setOrientacion(0);
+		posicionTest.setTamaño(2);
+		
+		Tablero tableroTest = new Tablero();
+		tableroTest.insertarBarco(posicionTest);
+		int[][] tablero = tableroTest.getTablero();
+
+		assertTrue(tablero[0][0] == 2);
+		assertTrue(tablero[1][0] == 2);
+		assertFalse(tablero[1][1] == 2);
+
+	}
 
 }

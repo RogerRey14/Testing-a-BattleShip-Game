@@ -5,6 +5,9 @@ public class Posicion {
 	int x;
 	int y;
 	int orientacion;
+	
+	int tamaño;
+
 
 	public Posicion(int x, int y) {
 		this.x = x;
@@ -49,5 +52,17 @@ public class Posicion {
 	public void setOrientacion(int orientacion) {
 		this.orientacion = orientacion;
 	}
+	
+	public int getTamaño() {
+		return tamaño;
+	}
+
+	public void setTamaño(int tamaño) {
+		this.tamaño = tamaño;
+	}
+	public int getOrientacion() {
+		return orientacion;
+	}
+
 
 }
