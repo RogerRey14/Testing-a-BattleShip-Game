@@ -23,7 +23,7 @@ public class PosicionTest {
 	 * para recoger los datos printados en consola
 	 */
 	@BeforeClass
-	public static void beforeAll() {
+	public static void beforeClass() {
 		systemOutOriginal = System.out;
 		resultado = new ByteArrayOutputStream();
 		System.setOut(new PrintStream(resultado));
