@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
-import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import com.battelship.Posicion;
@@ -15,15 +15,15 @@ import com.battelship.Posicion;
  */
 public class PosicionTest {
 
-	private PrintStream systemOutOriginal;
-	public ByteArrayOutputStream resultado;
+	private static PrintStream systemOutOriginal;
+	public static ByteArrayOutputStream resultado;
 
 	/*
 	 * Función que se ejecuta antes de cada @Test inicializa y setea un outputstream
 	 * para recoger los datos printados en consola
 	 */
-	@Before
-	public void beforeAll() {
+	@BeforeClass
+	public static void beforeAll() {
 		systemOutOriginal = System.out;
 		resultado = new ByteArrayOutputStream();
 		System.setOut(new PrintStream(resultado));
