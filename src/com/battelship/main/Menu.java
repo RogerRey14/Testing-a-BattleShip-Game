@@ -15,6 +15,10 @@ public class Menu {
 		
 		this.managerIO = managerIO;
 		this.showMenu();
+		selecionarOpcion(managerIO);
+	}
+
+	private void selecionarOpcion(IManagerIO managerIO) {
 		int option = managerIO.inInt();
 		switch (option) {
 		case 1:			
@@ -26,6 +30,11 @@ public class Menu {
 			break;
 		case 3:
 			System.out.print("Saliendo de la aplicacion! Bye");// EXIT
+			break;
+		default:
+			System.out.print("Opcion Invalida!");
+			this.showMenu();
+			this.selecionarOpcion(managerIO);
 			break;
 		}
 	}

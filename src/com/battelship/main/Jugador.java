@@ -9,7 +9,7 @@ public class Jugador implements IJugador {
 	String nombre;
 	int tipo;
 	private Tablero propio;
-	private Tablero enemigo;
+	public Tablero enemigo;
 	
 
 	public Tablero getPropio() {

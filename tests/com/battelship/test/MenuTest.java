@@ -38,7 +38,7 @@ public class MenuTest {
 	@Test
 	public void testMenuRunning() {
 
-		new Menu(new ManagerIOMock(Constants.SECUENCIA_GANADORA, Constants.SECUENCIA_GANADORA_IA));
+		new Menu(new ManagerIOMock(Constants.SECUENCIA_GANADORA_PLAYER, Constants.SECUENCIA_GANADORA_PLAYER_IA));
 		assertTrue(resultado.toString().contains("Running game"));
 	}
 
@@ -65,5 +65,20 @@ public class MenuTest {
 				+ "Saliendo de la aplicacion! Bye";
 		assertEquals(esperado, resultado.toString());
 	}
+	
+	/*
+	 * Test de caja negra del metodo selecionarOpcion
+	 * particiones equivalentes (-inf, 0), [0, 3], [4, inf)
+	 * frontera 1, 3
+	 * limites: 0, 4, -1, 4
+	 */
+	@Test
+	public void testMenuBadOption() {
+		
+		int[] input = new int[] { 0,4,-1,4,2,3 };
+		new Menu(new ManagerIOMock(input));
+		assertTrue(resultado.toString().contains("Opcion Invalida!"));
+	}
+	
 
 }

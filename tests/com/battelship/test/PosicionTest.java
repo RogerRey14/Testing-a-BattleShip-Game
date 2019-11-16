@@ -12,6 +12,7 @@ import com.battelship.main.Posicion;
  */
 public class PosicionTest {
 
+	
 	/*
 	 * Test de caja negra para asegurar que el constructor setea correctamente los parametros
 	 */
