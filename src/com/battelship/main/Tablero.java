@@ -2,12 +2,17 @@ package com.battelship.main;
 
 import java.util.Random;
 
+import com.battelship.main.intefaces.IManagerIO;
 import com.battelship.utils.Constants;
 
 public class Tablero {
 
 	int numeroBarcosPoscionados = Constants.TOTAL_BARCOS;
 	int[][] tablero = new int[Constants.TAMAÑO_TABLERO][Constants.TAMAÑO_TABLERO];
+
+	public Tablero(IManagerIO managerIO) {
+		// TODO Auto-generated constructor stub
+	}
 
 	public String mostrarTablero() {
 		return "Muestra Tablero!";
@@ -75,6 +80,26 @@ public class Tablero {
 
 	public String insertarBarco() {
 		return "Barco Insertado!";
+	}
+
+	public void insertPosicionRandom(int i) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void insertPosicion(int i) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void atacar(IJugador jugador) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void atacarRandom(IJugador jugador) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

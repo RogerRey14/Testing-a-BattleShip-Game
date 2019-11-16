@@ -1,51 +1,83 @@
 package com.battelship.main;
 
 import com.battelship.main.intefaces.IManagerIO;
+import com.battelship.utils.Constants;
 
-public class Jugador {
+public class Jugador implements IJugador {
 
-	private String nombre;
-	private int tipo;
+	String name;
+	private Tablero propio;
+	private Tablero enemigo;
+	int tipoJugador;
 
-	public Jugador(int tipoHumano, String nombreJugador) {
-		tipo = tipoHumano;
-		nombre = nombreJugador;
+	public Tablero getPropio() {
+		return propio;
 	}
 
-	public Jugador(int i, String string, IManagerIO managerIO) {
-		// TODO Auto-generated constructor stub
+	public Jugador(int i, String name, IManagerIO managerIO) {
+		this.tipoJugador = i;
+		this.name = name;
+		this.propio = new Tablero(managerIO);
+		this.enemigo = new Tablero(managerIO);
+		posicionarBarcos();
 	}
 
-	public String getNombre() {
-		return nombre;
+	public String getName() {
+		return name;
 	}
 
-	public int getTipo() {
-		return tipo;
+	public int getTipoJugador() {
+		return tipoJugador;
 	}
 
-	public String posicionarBarco() {
-		if (tipo == 1) {
-			return "Barco Posicionado!";
-		} else
-			return "Barco Posicionado Aleatoriamente!";
-	}
+	public void posicionarBarcos() {
 
-	public String atacar() {
-		if (tipo == 1) {
-			return "Atacando!";
-		} else
-			return "Atacando Aleatoriamente!";
+		if (tipoJugador == 1) {
+			System.out.println("Jugador: " + name + "\nPosiciona tus barcos!");
+			for (int i = 0; i < Constants.LISTA_BARCOS.length; i++) {
+				System.out.println(
+						"Posicion (X,Y) cabeza del barco que ocupa " + Constants.LISTA_BARCOS[i] + " cuadrados (1/1)");
+
+				propio.insertPosicion(Constants.LISTA_BARCOS[i]);
+				propio.mostrarTablero();
+
+			}
+		} else {
+
+			System.out.println("Maquina: " + name + "\nPosicionando sus barcos de manera aleatoria!");
+			for (int i = 0; i < Constants.LISTA_BARCOS.length; i++) {
+
+				propio.insertPosicionRandom(Constants.LISTA_BARCOS[i]);
+				// propio.mostrarTablero();
+
+			}
+		}
+
 	}
 
 	public boolean ganador() {
-		// TODO Auto-generated method stub
+		if (enemigo.numeroBarcosPoscionados == 0) {
+			return true;
+		}
 		return false;
 	}
 
-	public void atacar(Jugador userPlayer) {
-		// TODO Auto-generated method stub
-		
+	public void atacar(IJugador jugador) {
+
+		if (tipoJugador == 1) {
+			System.out.println("Jugador => " + name + " ATACANTE!!!");
+			System.out.println("Que posicion quieres atacar?");
+
+			enemigo.atacar(jugador);
+			enemigo.mostrarTablero();
+
+		} else {
+			System.out.println("Maquina => " + name + " ATACA ALEATORIAMENTE!");
+			enemigo.atacarRandom(jugador);
+			enemigo.mostrarTablero();
+
+		}
+
 	}
 
 }
