@@ -1,5 +1,9 @@
 package com.battelship.test;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 import org.junit.Test;
 
 import com.battelship.main.Partida;
@@ -9,7 +13,7 @@ import com.battelship.main.Partida;
  */
 
 public class PartidaTest {
-	
+
 	/*
 	 * Test comprueba que se crea una Partida correctamente
 	 */
@@ -30,7 +34,7 @@ public class PartidaTest {
 	public void testEmpezarPartida() {
 
 		Partida partidaTest = new Partida();
-		assertEquals(partidaTest.empezarPartida(),"Partida Empezada!");
+		assertEquals(partidaTest.empezarPartida(), "Partida Empezada!");
 
 	}
 
