@@ -13,6 +13,7 @@ import java.util.Random;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import com.battelship.main.Posicion;
 import com.battelship.main.Tablero;
 
 
@@ -31,7 +32,7 @@ public class TableroTest {
 	public void testCreateTablero() {
 		
 		Tablero tableroTest = new Tablero();
-		assertEquals(tableroTest.crearTablero(),"Tablero Iniciado!");
+		assertEquals(tableroTest.iniciarTablero(),"Tablero Iniciado!");
 
 	}
 
@@ -59,7 +60,7 @@ public class TableroTest {
 
 		Tablero tableroTest = new Tablero();
 		tableroTest.insertarPosicion(posicionTest);
-		int[][] tablero = tableroTest.getTablero();
+		int[][] tablero = tableroTest.crearTablero();
 
 		assertTrue(tablero[0][0] == 1);
 		assertFalse(tablero[0][1] == 1);
@@ -81,7 +82,7 @@ public class TableroTest {
 		int y = rn.nextInt(10) + 1;
 		Posicion testPosicion = new Posicion(x, y);
 		tableroTest.insertarPosicionRandom(testPosicion);
-		int[][] tablero = tableroTest.getTablero();
+		int[][] tablero = tableroTest.crearTablero();
 
 		assertTrue(tablero[x][y] == 1);
 	}
