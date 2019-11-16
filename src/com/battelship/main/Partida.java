@@ -1,10 +1,10 @@
 package com.battelship.main;
 
 import com.battelship.main.intefaces.IManagerIO;
-import com.battelship.main.intefaces.IPartida;
 
 
-public class Partida implements IPartida {
+
+public class Partida   {
 
 	IManagerIO managerIO;
 

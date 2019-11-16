@@ -11,8 +11,6 @@ import org.junit.Test;
 
 import com.battelship.main.Menu;
 import com.battelship.mocks.ManagerIOMock;
-import com.battelship.mocks.ManagerIOMockExit;
-import com.battelship.mocks.ManagerIOMockOptions;
 import com.battelship.utils.Constants;
 
 /*
@@ -49,8 +47,8 @@ public class MenuTest {
 	 */
 	@Test
 	public void testMenuOptions() {
-
-		new Menu(new ManagerIOMockOptions());
+		int[] input = new int[] { 2,3 };
+		new Menu(new ManagerIOMock(input));
 		String esperado = "------Menu Principal------\n" + "1- Jugar\n" + "2- Opciones (TODO)\n" + "3- Salir\n"
 				+ "Option Menu";
 		assertEquals(esperado, resultado.toString());
@@ -61,8 +59,8 @@ public class MenuTest {
 	 */
 	@Test
 	public void testMenuExit() {
-
-		new Menu(new ManagerIOMockExit());
+		int[] input = new int[] { 3 };
+		new Menu(new ManagerIOMock(input));
 		String esperado = "------Menu Principal------\n" + "1- Jugar\n" + "2- Opciones (TODO)\n" + "3- Salir\n"
 				+ "Saliendo de la aplicacion! Bye";
 		assertEquals(esperado, resultado.toString());

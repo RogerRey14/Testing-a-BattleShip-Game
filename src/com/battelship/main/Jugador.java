@@ -7,11 +7,10 @@ import com.battelship.utils.Constants;
 public class Jugador implements IJugador {
 
 	String nombre;
-
-
+	int tipo;
 	private Tablero propio;
 	private Tablero enemigo;
-	int tipo;
+	
 
 	public Tablero getPropio() {
 		return propio;
