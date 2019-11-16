@@ -1,6 +1,7 @@
 package com.battelship.main;
 
 import com.battelship.main.intefaces.IManagerIO;
+import com.battelship.main.intefaces.IPartida;
 
 
 public class Partida implements IPartida {
@@ -23,9 +24,9 @@ public class Partida implements IPartida {
 
 	public void printGanador() {
 		if (userPlayer.ganador()) {
-			System.out.println("Ganador de la partida " + userPlayer.getNombre() + "!!!");
+			System.out.println("Ganador de la partida " + userPlayer.name + "!!!");
 		} else {
-			System.out.println("Ganador de la partida " + randomIA.getNombre() + "!!!");
+			System.out.println("Ganador de la partida " + randomIA.name + "!!!");
 		}
 	}
 

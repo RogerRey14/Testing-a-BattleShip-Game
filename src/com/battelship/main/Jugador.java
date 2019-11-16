@@ -1,5 +1,6 @@
 package com.battelship.main;
 
+import com.battelship.main.intefaces.IJugador;
 import com.battelship.main.intefaces.IManagerIO;
 import com.battelship.utils.Constants;
 
