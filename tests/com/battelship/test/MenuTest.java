@@ -7,7 +7,7 @@ import org.junit.Test;
 import com.battelship.main.Menu;
 
 /*
- * Test que inicializa el juego y llama a la funcion main
+ * Test que crea un menu principal para empezar a jugar
  * 
  */
 
