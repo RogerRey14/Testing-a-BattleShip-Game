@@ -1,11 +1,13 @@
 package com.battelship.test;
 
 
+
+
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import com.battelship.main.Menu;
+import com.battelship.main.Jugador;
 import com.battelship.utils.Constants;
 
 /*
@@ -22,8 +24,8 @@ public class JugadorTest {
 	public void testCreateJugador() {
 
 		Jugador jugadorTest = new Jugador(Constants.TIPO_HUMANO, Constants.NOMBRE_JUGADOR);
-		assertEquals(Constants.NOMBRE_JUGADOR, jugadorTest.getNombre(), "El nombre del Jugador debe coincidir");
-		assertEquals(Constants.TIPO_HUMANO, jugadorTest.getTipo(), "El tipo de Jugador debe coincidir");
+		assertEquals(Constants.NOMBRE_JUGADOR, jugadorTest.getNombre());
+		assertEquals(Constants.TIPO_HUMANO, jugadorTest.getTipo());
 
 	}
 
@@ -35,8 +37,8 @@ public class JugadorTest {
 	public void testCreateRandomIA() {
 
 		Jugador randomIATest = new Jugador(Constants.TIPO_RANDOM_IA, Constants.NOMBRE_RANDOM_IA);
-		assertEquals(Constants.NOMBRE_RANDOM_IA, randomIATest.getNombre(), "El nombre del RandomIA debe coincidir");
-		assertEquals(Constants.TIPO_RANDOM_IA, randomIATest.getTipo(), "El tipo de RandomIA debe coincidir");
+		assertEquals(Constants.NOMBRE_RANDOM_IA, randomIATest.getNombre());
+		assertEquals(Constants.TIPO_RANDOM_IA, randomIATest.getTipo());
 
 	}
 
