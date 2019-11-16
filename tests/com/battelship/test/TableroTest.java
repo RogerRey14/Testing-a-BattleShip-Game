@@ -1,165 +1,139 @@
 package com.battelship.test;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertNull;
+import com.battelship.main.*;
+import com.battelship.mocks.*;
 import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.Random;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
-import com.battelship.main.Posicion;
-import com.battelship.main.Tablero;
 
-
-
-/*
- * Esta clase de test se encarga de las pruebas unitarias de la clase Tablero
- */
 public class TableroTest {
-
-
+	private PrintStream systemOutOriginal;
+	public ByteArrayOutputStream resultado;
 
 	/*
-	 * Test comprueba que se crea una Tablero correctamente
+	 * Función que se ejecuta antes de cada @Test inicializa y setea un outputstream
+	 * para recoger los datos printados en consola
 	 */
-	@Test
-	public void testCreateTablero() {
-		
-		Tablero tableroTest = new Tablero();
-		assertEquals(tableroTest.iniciarTablero(),"Tablero Iniciado!");
-
+	@Before
+	public void beforeAll() {
+		systemOutOriginal = System.out;
+		resultado = new ByteArrayOutputStream();
+		System.setOut(new PrintStream(resultado));
 	}
 
 	/*
-	 * Test comprueba que se muestra un Tablero correctamente
+	 * Función que devuelve la salida del sistema a su estado original despues de
+	 * cada @Test
+	 */
+	@After
+	public void restoreSystemOutStream() {
+		System.setOut(systemOutOriginal);
+	}
+
+	/*
+	 * Test de caja blanca para verificar que el tablero se muestra correctamente al
+	 * iniciarse
 	 */
 	@Test
 	public void testMostrarTablero() {
-
-		Tablero tableroTest = new Tablero();
-		assertEquals(tableroTest.mostrarTablero(),"Muestra Tablero!");
-
+		Tablero tablero = new Tablero(new ManagerIOMock());
+		tablero.mostrarTablero();
+		String esperado = "     _______________________________________\r\n"
+				+ "    | A | B | C | D | F | G | H | I | J | K |\r\n"
+				+ "+---+---+---+---+---+---+---+---+---+---+---+\r\n"
+				+ "| 1 |   |   |   |   |   |   |   |   |   |   |\r\n"
+				+ "+---+---+---+---+---+---+---+---+---+---+---+\r\n"
+				+ "| 2 |   |   |   |   |   |   |   |   |   |   |\r\n"
+				+ "+---+---+---+---+---+---+---+---+---+---+---+\r\n"
+				+ "| 3 |   |   |   |   |   |   |   |   |   |   |\r\n"
+				+ "+---+---+---+---+---+---+---+---+---+---+---+\r\n"
+				+ "| 4 |   |   |   |   |   |   |   |   |   |   |\r\n"
+				+ "+---+---+---+---+---+---+---+---+---+---+---+\r\n"
+				+ "| 5 |   |   |   |   |   |   |   |   |   |   |\r\n"
+				+ "+---+---+---+---+---+---+---+---+---+---+---+\r\n"
+				+ "| 6 |   |   |   |   |   |   |   |   |   |   |\r\n"
+				+ "+---+---+---+---+---+---+---+---+---+---+---+\r\n"
+				+ "| 7 |   |   |   |   |   |   |   |   |   |   |\r\n"
+				+ "+---+---+---+---+---+---+---+---+---+---+---+\r\n"
+				+ "| 8 |   |   |   |   |   |   |   |   |   |   |\r\n"
+				+ "+---+---+---+---+---+---+---+---+---+---+---+\r\n"
+				+ "| 9 |   |   |   |   |   |   |   |   |   |   |\r\n"
+				+ "+---+---+---+---+---+---+---+---+---+---+---+\r\n"
+				+ "| 10|   |   |   |   |   |   |   |   |   |   |\r\n"
+				+ "+---+---+---+---+---+---+---+---+---+---+---+\r\n";
+		assertEquals(esperado, resultado.toString());
 	}
 
-	/*
-	 * Test comprueba que se inserta correctamente una posicion en el Tablero
-	 * 
-	 */
+
 	@Test
-	public void testInsertarPosicion() {
+	public void testPosicionesIncorrectasIzquierda() {
 
+		int[] arrayInputJugador = new int[] { 1, 1, 1, 3, 1, 1, 1, 1, 3, 1, 1, 5, 1, 1, 7, 1, 1, 9, 1, 6, 1, 0, 8, 1, 0,
+				10, 1, 0, 8, 8, 0, 10, 8, 0, 1, 1, 2, 1, 3, 1, 4, 1, 1, 3, 2, 3, 3, 3, 1, 5, 2, 5, 3, 5, 1, 7, 2, 7, 1,
+				9, 2, 9, 6, 1, 6, 2, 8, 1, 8, 8, 10, 1, 10, 8 };
+		int[] arrayInputRandom = new int[] { 1, 1, 1, 1, 3, 1, 1, 5, 1, 1, 7, 1, 1, 9, 1, 6, 1, 0, 8, 1, 0, 10, 1, 0, 8,
+				8, 0, 10, 8, 0, 1, 1, 1, 3, 1, 5, 1, 7, 1, 9, 6, 1, 8, 1, 10, 1, 8, 8, 10, 8 };
 
-		Posicion posicionTest = new Posicion(0, 0);
-		posicionTest.setOrientacion(0);
-
-		Tablero tableroTest = new Tablero();
-		tableroTest.insertarPosicion(posicionTest);
-		int[][] tablero = tableroTest.crearTablero();
-
-		assertTrue(tablero[0][0] == 1);
-		assertFalse(tablero[0][1] == 1);
-		assertFalse(tablero[1][0] == 1);
-	}
-
-	/*
-	 * Test que comprueba la insercion de una posicion aleatoria
-	 * 
-	 */
-	@Test
-	public void testInsertPosicionRandom() {
-
+		new Menu(new ManagerIOMock(arrayInputJugador, arrayInputRandom));
 		
+		assertTrue(resultado.toString().contains("La posicion Posicion [x=1, y=1, orientacion=Izquierda]"));
+
+	}
+	
+	@Test
+	public void testPosicionesIncorrectasArriba() {
+
+		int[] arrayInputJugador = new int[] { 1, 1, 1, 2, 1, 1, 1, 1, 3, 1, 1, 5, 1, 1, 7, 1, 1, 9, 1, 6, 1, 0, 8, 1, 0,
+				10, 1, 0, 8, 8, 0, 10, 8, 0, 1, 1, 2, 1, 3, 1, 4, 1, 1, 3, 2, 3, 3, 3, 1, 5, 2, 5, 3, 5, 1, 7, 2, 7, 1,
+				9, 2, 9, 6, 1, 6, 2, 8, 1, 8, 8, 10, 1, 10, 8 };
+		int[] arrayInputRandom = new int[] { 1, 1, 1, 1, 3, 1, 1, 5, 1, 1, 7, 1, 1, 9, 1, 6, 1, 0, 8, 1, 0, 10, 1, 0, 8,
+				8, 0, 10, 8, 0, 1, 1, 1, 3, 1, 5, 1, 7, 1, 9, 6, 1, 8, 1, 10, 1, 8, 8, 10, 8 };
+
+		new Menu(new ManagerIOMock(arrayInputJugador, arrayInputRandom));
+		//TODO
+		//assertTrue(resultado.toString().contains("La posicion Posicion [x=1, y=1, orientacion=Izquierda]"));
+
+	}
+	
+	@Test
+	public void testPosicionesAguaAtacar() {
+
+		int[] arrayInputJugadorRepitePosicionAtaque = new int[] { 1, 1, 1, 2, 1, 1, 1, 1, 3, 1, 1, 5, 1, 1, 7, 1, 1, 9, 1, 6, 1, 0, 8, 1, 0,
+				10, 1, 0, 8, 8, 0, 10, 8, 0, 1, 1,1,1, 2, 1, 3, 1, 4, 1, 1, 3, 2, 3, 3, 3, 1, 5, 2, 5, 3, 5, 1, 7, 2, 7, 1,
+				9, 2, 9, 6, 1, 6, 2, 8, 1, 8, 8, 10, 1, 10, 8 };
+		int[] arrayInputRandom = new int[] { 1, 1, 1, 1, 3, 1, 1, 5, 1, 1, 7, 1, 1, 9, 1, 6, 1, 0, 8, 1, 0, 10, 1, 0, 8,
+				8, 0, 10, 8, 0, 1, 1, 1, 3, 1, 5, 1, 7, 1, 9, 6, 1, 8, 1, 10, 1, 8, 8, 10, 8 };
+
+		new Menu(new ManagerIOMock(arrayInputJugadorRepitePosicionAtaque, arrayInputRandom));
 		
-		Random rn = new Random();
-		Tablero tableroTest = new Tablero();
-		int x = rn.nextInt(10) + 1;
-		int y = rn.nextInt(10) + 1;
-		Posicion testPosicion = new Posicion(x, y);
-		tableroTest.insertarPosicionRandom(testPosicion);
-		int[][] tablero = tableroTest.crearTablero();
-
-		assertTrue(tablero[x][y] == 1);
-	}
-
-	/*
-	 * Test comprueba si puedes insertar a partir de una orientacion y el tama�o del
-	 * barco
-	 * 
-	 */
-	@Test
-	public void testSePuedeInsertarOrientacion() {
-
-		Posicion posicionTest = new Posicion(0, 0);
-		posicionTest.setOrientacion(0);
-		posicionTest.setTamaño(2);
-
-		Tablero tableroTest = new Tablero();
-		assertTrue(tableroTest.sePuedeInsertarOrientacion(posicionTest));
-		posicionTest.setOrientacion(1);
-		assertTrue(tableroTest.sePuedeInsertarOrientacion(posicionTest));
-		posicionTest.setOrientacion(2);
-		assertTrue(tableroTest.sePuedeInsertarOrientacion(posicionTest));
-		posicionTest.setOrientacion(3);
-		assertTrue(tableroTest.sePuedeInsertarOrientacion(posicionTest));
-		posicionTest.setOrientacion(4);
-		assertNull(tableroTest.sePuedeInsertarOrientacion(posicionTest));
+		//TODO
+		//assertTrue(resultado.toString().contains("La posicion Posicion [x=1, y=1, orientacion=Izquierda]"));
 
 	}
-
-	/*
-	 * Test Poner margen de proteccion al barco (1 Cuadrado)
-	 * 
-	 */
+	
+	
 	@Test
-	public void testProtecionBarco() {
+	public void testIzquierdaArribaInsertarBarco() {
 
-		Tablero tableroTest = new Tablero();
-		assertEquals(tableroTest.protecionBarco(),"Protecion Activada");
-
-	}
-
-	/*
-	 * Test Genera Orientacion Aleatoria
-	 * 
-	 */
-	@Test
-	public void testGenerarOrientacion() {
-
-		Tablero tableroTest = new Tablero();
-		assertEquals(Posicion.class, tableroTest.generarOrientacion().getClass());
-		assertNotEquals(tableroTest.generarOrientacion(), tableroTest.generarOrientacion());
-
-	}
-
-	/*
-	 * Test genera posiciones X-Y aleatorias entre 10 y 1
-	 * 
-	 */
-	@Test
-	public void testGenerarPosicion() {
-
-
-		Tablero tableroTest = new Tablero();
-		assertEquals(Posicion.class, tableroTest.generaPosicion().getClass());
-		assertNotEquals(tableroTest.generaPosicion(), tableroTest.generaPosicion());
-
-	}
-
-	/*
-	 * Test insertar un barco con su correspondiente tama�o. Para simpliar no
-	 * tendremos encuentra la orientacion (Temporal) y no comprobamos los margenes
-	 */
-	@Test
-	public void testInsertBarco() {
+		int[] arrayInputJugador = new int[] { 1, 1, 1, 1, 1, 3, 3, 1,3,1, 1, 5, 1, 1, 7, 1, 1, 9, 1, 6, 1, 0, 8, 1, 0,
+				10, 1, 0, 8, 8, 3, 10, 8, 2, 1, 1, 2, 1, 3, 1, 4, 1, 1, 3, 2, 3, 3, 3, 1, 5, 2, 5, 3, 5, 1, 7, 2, 7, 1,
+				9, 2, 9, 6, 1, 6, 2, 8, 1, 8, 8, 10, 1, 10, 8 };
 		
-		Tablero tableroTest = new Tablero();
-		assertEquals(tableroTest.insertarBarco(),"Barco Insertado!");
-		
+		int[] arrayInputRandom = new int[] { 1, 1, 1, 1, 3, 1, 1, 5, 1, 1, 7, 1, 1, 9, 1, 6, 1, 0, 8, 1, 0, 10, 1, 0, 8,
+				8, 0, 10, 8, 0, 1, 1, 1, 3, 1, 5, 1, 7, 1, 9, 6, 1, 8, 1, 10, 1, 8, 8, 10, 8 };
 
+		new Menu(new ManagerIOMock(arrayInputJugador, arrayInputRandom));
+		//TODO
+		//assertTrue(resultado.toString().contains("La posicion Posicion [x=1, y=1, orientacion=Izquierda]"));
 
 	}
+	
+	
 
 }

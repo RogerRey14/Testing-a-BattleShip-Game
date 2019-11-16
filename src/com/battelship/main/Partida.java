@@ -24,9 +24,9 @@ public class Partida implements IPartida {
 
 	public void printGanador() {
 		if (userPlayer.ganador()) {
-			System.out.println("Ganador de la partida " + userPlayer.name + "!!!");
+			System.out.println("Ganador de la partida " + userPlayer.getName() + "!!!");
 		} else {
-			System.out.println("Ganador de la partida " + randomIA.name + "!!!");
+			System.out.println("Ganador de la partida " + randomIA.getName() + "!!!");
 		}
 	}
 
