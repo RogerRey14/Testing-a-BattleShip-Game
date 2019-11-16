@@ -1,9 +1,7 @@
 package com.battelship.test;
 
-
-
-
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -13,8 +11,8 @@ import org.junit.Test;
 import org.junit.jupiter.api.AfterEach;
 
 import com.battelship.main.Jugador;
-import com.battelship.main.ManagerIO;
-import com.battelship.utils.Constants;
+import com.battelship.main.Menu;
+import com.battelship.mocks.ManagerIOMock;
 
 /*
  * Esta clase de test se encarga de las pruebas unitarias de la clase Jugador
@@ -22,7 +20,6 @@ import com.battelship.utils.Constants;
 
 public class JugadorTest {
 
-	
 	private PrintStream systemOutOriginal;
 	public ByteArrayOutputStream resultado;	
 
@@ -44,79 +41,6 @@ public class JugadorTest {
     public void restoreSystemOutStream() {
         System.setOut(systemOutOriginal);
     }
-    
-	/*
-	 * Test Caja Negra comprueba que se crea un Jugador con nombre y tipo. Tipo
-	 * Humano = 1
-	 */
-	@Test
-	public void testCreateJugador() {
-
-		Jugador jugadorTest = new Jugador(Constants.TIPO_HUMANO, Constants.NOMBRE_JUGADOR,new ManagerIO());
-		assertEquals(Constants.NOMBRE_JUGADOR, jugadorTest.getNombre());
-		assertEquals(Constants.TIPO_HUMANO, jugadorTest.getTipo());
-
-	}
-
-	/*
-	 * Test Caja Negra comprueba que se crea un Jugador con nombre y tipo. Tipo
-	 * RandomIA = 2
-	 */
-	@Test
-	public void testCreateRandomIA() {
-
-		Jugador randomIATest = new Jugador(Constants.TIPO_RANDOM_IA, Constants.NOMBRE_RANDOM_IA,new ManagerIOMock(arrayInputJugador,arrayInputRandom));
-		assertEquals(Constants.NOMBRE_RANDOM_IA, randomIATest.getNombre());
-		assertEquals(Constants.TIPO_RANDOM_IA, randomIATest.getTipo());
-
-	}
-
-	/*
-	 * Test Posicionar Barco Jugador
-	 */
-	@Test
-	public void testPosicionaBarcoJugador() {
-
-		Jugador jugadorTest = new Jugador(Constants.TIPO_HUMANO, Constants.NOMBRE_JUGADOR);
-		assertEquals("Barco Posicionado!", jugadorTest.posicionarBarco());
-
-	}
-
-	/*
-	 * Test Posicionar Barco RandomIA
-	 */
-	@Test
-	public void testPosicionaBarcoRandomIA() {
-
-		Jugador randomIATest = new Jugador(Constants.TIPO_RANDOM_IA, Constants.NOMBRE_RANDOM_IA);
-		assertEquals("Barco Posicionado Aleatoriamente!", randomIATest.posicionarBarco());
-
-	}
-
-	/*
-	 * Test Atacar Barco Jugador
-	 */
-	@Test
-	public void testAtacarJugador() {
-
-		Jugador jugadorTest = new Jugador(Constants.TIPO_HUMANO, Constants.NOMBRE_JUGADOR);
-		assertEquals("Atacando!", jugadorTest.atacar());
-
-	}
-
-	/*
-	 * Test Atacar Barco RandomIA
-	 */
-	@Test
-	public void testAtacarRandomIA() {
-
-		Jugador randomIATest = new Jugador(Constants.TIPO_RANDOM_IA, Constants.NOMBRE_RANDOM_IA);
-		assertEquals("Atacando Aleatoriamente!", randomIATest.atacar());
-
-	}
-	
-	
-	
 
 	/*
 	 * Test 
@@ -133,9 +57,9 @@ public class JugadorTest {
 		Jugador randomTest = new Jugador(2,"Random",new ManagerIOMock(arrayInputJugador,arrayInputRandom));
 		
 		assertEquals("Cristian", jugadorTest.getName());
-		assertEquals(1, jugadorTest.getTipoJugador());
+		assertEquals(1, jugadorTest.getTipo());
 		assertEquals("Random", randomTest.getName());
-		assertEquals(2, randomTest.getTipoJugador());
+		assertEquals(2, randomTest.getTipo());
 	}
 	
 	/*
@@ -154,6 +78,5 @@ public class JugadorTest {
 		assertTrue(resultado.toString().contains("Ganador de la partida Jugador!!!"));
 
 	}
-
 
 }
