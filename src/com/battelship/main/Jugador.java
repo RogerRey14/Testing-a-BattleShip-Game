@@ -6,35 +6,37 @@ import com.battelship.utils.Constants;
 
 public class Jugador implements IJugador {
 
-	String name;
+	String nombre;
+
+
 	private Tablero propio;
 	private Tablero enemigo;
-	int tipoJugador;
+	int tipo;
 
 	public Tablero getPropio() {
 		return propio;
 	}
 
 	public Jugador(int i, String name, IManagerIO managerIO) {
-		this.tipoJugador = i;
-		this.name = name;
+		this.tipo = i;
+		this.nombre = name;
 		this.propio = new Tablero(managerIO);
 		this.enemigo = new Tablero(managerIO);
 		posicionarBarcos();
 	}
 
 	public String getName() {
-		return name;
+		return nombre;
 	}
 
-	public int getTipoJugador() {
-		return tipoJugador;
+	public int getTipo() {
+		return tipo;
 	}
 
 	public void posicionarBarcos() {
 
-		if (tipoJugador == 1) {
-			System.out.println("Jugador: " + name + "\nPosiciona tus barcos!");
+		if (tipo == 1) {
+			System.out.println("Jugador: " + nombre + "\nPosiciona tus barcos!");
 			for (int i = 0; i < Constants.LISTA_BARCOS.length; i++) {
 				System.out.println(
 						"Posicion (X,Y) cabeza del barco que ocupa " + Constants.LISTA_BARCOS[i] + " cuadrados (1/1)");
@@ -45,7 +47,7 @@ public class Jugador implements IJugador {
 			}
 		} else {
 
-			System.out.println("Maquina: " + name + "\nPosicionando sus barcos de manera aleatoria!");
+			System.out.println("Maquina: " + nombre + "\nPosicionando sus barcos de manera aleatoria!");
 			for (int i = 0; i < Constants.LISTA_BARCOS.length; i++) {
 
 				propio.insertPosicionRandom(Constants.LISTA_BARCOS[i]);
@@ -65,15 +67,15 @@ public class Jugador implements IJugador {
 
 	public void atacar(IJugador jugador) {
 
-		if (tipoJugador == 1) {
-			System.out.println("Jugador => " + name + " ATACANTE!!!");
+		if (tipo == 1) {
+			System.out.println("Jugador => " + nombre + " ATACANTE!!!");
 			System.out.println("Que posicion quieres atacar?");
 
 			enemigo.atacar(jugador);
 			enemigo.mostrarTablero();
 
 		} else {
-			System.out.println("Maquina => " + name + " ATACA ALEATORIAMENTE!");
+			System.out.println("Maquina => " + nombre + " ATACA ALEATORIAMENTE!");
 			enemigo.atacarRandom(jugador);
 			enemigo.mostrarTablero();
 
@@ -81,4 +83,16 @@ public class Jugador implements IJugador {
 
 	}
 
+	
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public void setTipo(int tipoJugador) {
+		this.tipo = tipoJugador;
+	}
 }
