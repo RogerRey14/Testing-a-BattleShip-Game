@@ -17,9 +17,22 @@ public class PosicionTest {
 	 */
 	@Test
 	public void testConstructor() {
+		
+		//Contrustor inputs 
 		Posicion posicion = new Posicion(0, 0);
 		assertEquals(posicion.getX(), 0);
 		assertEquals(posicion.getY(), 0);
+		
+		//Construsctor empty
+		Posicion posicionTest = new Posicion();
+		posicionTest.setX(0);
+		posicionTest.setY(0);
+		posicionTest.setTamaño(2);
+		assertEquals(posicionTest.getX(), 0);
+		assertEquals(posicionTest.getY(), 0);
+		assertEquals(posicionTest.getTamaño(), 2);
+		assertEquals(posicionTest.toString(), "Posicion [x=1, y=1, orientacion=Derecha]");
+		
 	}
 	
 	/*
@@ -33,16 +46,23 @@ public class PosicionTest {
 		Posicion posicion = new Posicion(0, 0);
 		posicion.setOrientacion(0);
 		assertEquals(posicion.getOrientacionString(), "Derecha");
+		assertEquals(posicion.getOrientacion(), 0);
 		posicion.setOrientacion(1);
 		assertEquals(posicion.getOrientacionString(), "Abajo");
+		assertEquals(posicion.getOrientacion(), 1);
 		posicion.setOrientacion(2);
 		assertEquals(posicion.getOrientacionString(), "Arriba");
+		assertEquals(posicion.getOrientacion(), 2);
 		posicion.setOrientacion(3);
 		assertEquals(posicion.getOrientacionString(), "Izquierda");
+		assertEquals(posicion.getOrientacion(), 3);
 		posicion.setOrientacion(-1);
 		assertEquals(posicion.getOrientacionString(), "No tiene orientacion");
 		posicion.setOrientacion(4);
 		assertEquals(posicion.getOrientacionString(), "No tiene orientacion");
 	}
+	
+	
+
 
 }

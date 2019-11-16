@@ -117,7 +117,6 @@ public class TableroTest {
 
 	}
 	
-	
 	@Test
 	public void testIzquierdaArribaInsertarBarco() {
 

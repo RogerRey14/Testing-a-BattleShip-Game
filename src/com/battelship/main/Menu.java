@@ -12,6 +12,7 @@ public class Menu {
 	 * Constructor principal de la clase se encarga de gestionar las elecciones en el menu del jugador
 	 */
 	public Menu(IManagerIO managerIO) {
+		
 		this.managerIO = managerIO;
 		this.showMenu();
 		int option = managerIO.inInt();

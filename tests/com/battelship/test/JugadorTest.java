@@ -56,9 +56,9 @@ public class JugadorTest {
 		Jugador jugadorTest = new Jugador(1,"Cristian",new ManagerIOMock(arrayInputJugador,arrayInputRandom));
 		Jugador randomTest = new Jugador(2,"Random",new ManagerIOMock(arrayInputJugador,arrayInputRandom));
 		
-		assertEquals("Cristian", jugadorTest.getName());
+		assertEquals("Cristian", jugadorTest.getNombre());
 		assertEquals(1, jugadorTest.getTipo());
-		assertEquals("Random", randomTest.getName());
+		assertEquals("Random", randomTest.getNombre());
 		assertEquals(2, randomTest.getTipo());
 	}
 	
@@ -75,6 +75,7 @@ public class JugadorTest {
 				8, 0, 10, 8, 0, 1, 1, 1, 3, 1, 5, 1, 7, 1, 9, 6, 1, 8, 1, 10, 1, 8, 8, 10, 8 };
 
 		new Menu(new ManagerIOMock(arrayInputJugador, arrayInputRandom));
+
 		assertTrue(resultado.toString().contains("Ganador de la partida Jugador!!!"));
 
 	}

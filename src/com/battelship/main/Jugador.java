@@ -25,13 +25,6 @@ public class Jugador implements IJugador {
 		posicionarBarcos();
 	}
 
-	public String getName() {
-		return nombre;
-	}
-
-	public int getTipo() {
-		return tipo;
-	}
 
 	public void posicionarBarcos() {
 
@@ -88,11 +81,9 @@ public class Jugador implements IJugador {
 		return nombre;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+
+	public int getTipo() {
+		return tipo;
 	}
 
-	public void setTipo(int tipoJugador) {
-		this.tipo = tipoJugador;
-	}
 }
