@@ -1,3 +1,6 @@
+package com.battelship.test;
+
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
@@ -9,17 +12,17 @@ import com.battelship.main.Menu;
  */
 
 public class MenuTest {
-	
+
 	/*
 	 * Test comprueba que se crea el menu correctamente
 	 */
 	@Test
 	public void testEmpezarJuego() {
-		
+
 		Menu testMenu = new Menu();
-		assertEquals(testMenu.mostrarMenu(),"------Menu Principal------"));
+		assertEquals(testMenu.mostrarMenu(), "------Menu Principal------");
 	}
-	
+
 	/*
 	 * Test que devuelve la opcion del menu
 	 */
@@ -28,10 +31,7 @@ public class MenuTest {
 
 		Menu testMenu = new Menu();
 		assertEquals(testMenu.getOpcion(), 1);
-		
 
 	}
 
-	
-	
 }
