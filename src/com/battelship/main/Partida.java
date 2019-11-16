@@ -1,5 +1,7 @@
 package com.battelship.main;
 
+import com.battelship.main.intefaces.IManagerIO;
+
 public class Partida {
 
 	Jugador userPlayer;
@@ -12,6 +14,10 @@ public class Partida {
 		this.userPlayer = new Jugador(1, "Jugador");
 		this.randomIA = new Jugador(2, "RandomIA");
 
+	}
+
+	public Partida(IManagerIO managerIO) {
+		// TODO Auto-generated constructor stub
 	}
 
 	public Jugador getUserPlayer() {
