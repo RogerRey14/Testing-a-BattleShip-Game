@@ -2,6 +2,8 @@ package com.battelship.test;
 
 import org.junit.Test;
 
+import com.battelship.main.Partida;
+
 /*
  * Esta clase de test se encarga de las pruebas unitarias de la clase Partida
  */
