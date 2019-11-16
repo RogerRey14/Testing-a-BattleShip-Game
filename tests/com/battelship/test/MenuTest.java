@@ -17,7 +17,7 @@ public class MenuTest {
 	public void testEmpezarJuego() {
 		
 		Menu testMenu = new Menu();
-		assertTrue(testMenu.mostrarMenu()"------Menu Principal------"));
+		assertEquals(testMenu.mostrarMenu(),"------Menu Principal------"));
 	}
 	
 	/*
@@ -27,8 +27,8 @@ public class MenuTest {
 	public void testGetOpcion() {
 
 		Menu testMenu = new Menu();
-		testMenu.getOpcion();
 		assertEquals(testMenu.getOpcion(), 1);
+		
 
 	}
 
