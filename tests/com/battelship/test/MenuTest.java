@@ -11,7 +11,7 @@ import com.battelship.main.Menu;
 public class MenuTest {
 	
 	/*
-	 * Test comprueba que inicializa el tablero correctamente
+	 * Test comprueba que se crea el menu correctamente
 	 */
 	@Test
 	public void testEmpezarJuego() {
@@ -19,6 +19,19 @@ public class MenuTest {
 		Menu testMenu = new Menu();
 		assertTrue(testMenu.mostrarMenu()"------Menu Principal------"));
 	}
+	
+	/*
+	 * Test que devuelve la opcion del menu
+	 */
+	@Test
+	public void testGetOpcion() {
+
+		Menu testMenu = new Menu();
+		testMenu.getOpcion();
+		assertEquals(testMenu.getOpcion(), 1);
+
+	}
+
 	
 	
 }
