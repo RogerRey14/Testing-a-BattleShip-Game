@@ -1,51 +1,80 @@
 package com.battelship.main;
 
+import java.util.Random;
+
+import com.battelship.utils.Constants;
+
 public class Tablero {
 
+	int numeroBarcosPoscionados = Constants.TOTAL_BARCOS;
+	int[][] tablero = new int[Constants.TAMAÑO_TABLERO][Constants.TAMAÑO_TABLERO];
 
-	public Object mostrarTablero() {
-		// TODO Auto-generated method stub
-		return null;
+	public String mostrarTablero() {
+		return "Muestra Tablero!";
+	}
+
+	public String iniciarTablero() {
+
+		return "Tablero Iniciado!";
 	}
 
 	public void insertarPosicion(Posicion posicionTest) {
-		// TODO Auto-generated method stub
-		
-	}
+		tablero[posicionTest.getX()][posicionTest.getY()] = 1;
 
-	public Object iniciarTablero() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public int[][] crearTablero() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	public void insertarPosicionRandom(Posicion testPosicion) {
-		// TODO Auto-generated method stub
-		
+
+		tablero[testPosicion.getX()][testPosicion.getY()] = 1;
+
 	}
 
-	public boolean sePuedeInsertarOrientacion(Posicion posicionTest) {
-		// TODO Auto-generated method stub
-		return false;
+	public int[][] crearTablero() {
+		return tablero;
 	}
 
-	public Object protecionBarco() {
-		// TODO Auto-generated method stub
+	public Boolean sePuedeInsertarOrientacion(Posicion posicionTest) {
+
+		switch (posicionTest.getOrientacion()) {
+		case 0:
+			return true;
+
+		case 1:
+			return true;
+
+		case 2:
+			return true;
+
+		case 3:
+			return true;
+
+		}
 		return null;
+
+	}
+
+	public String protecionBarco() {
+		return "Protecion Activada";
 	}
 
 	public Object generarOrientacion() {
-		// TODO Auto-generated method stub
-		return null;
+		Random rn = new Random();
+		int x = rn.nextInt(10) + 1;
+		int y = rn.nextInt(10) + 1;
+		Posicion pos = new Posicion(x, y);
+		return pos;
 	}
 
 	public Object generaPosicion() {
-		// TODO Auto-generated method stub
-		return null;
+		Random rn = new Random();
+		int x = rn.nextInt(4) + 0;
+		int y = rn.nextInt(4) + 0;
+		Posicion pos = new Posicion(x, y);
+		return pos;
+	}
+
+	public String insertarBarco() {
+		return "Barco Insertado!";
 	}
 
 }

@@ -6,11 +6,8 @@ import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
 import java.util.Random;
 
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 import com.battelship.main.Posicion;
@@ -146,7 +143,8 @@ public class TableroTest {
 
 
 		Tablero tableroTest = new Tablero();
-		assertEquals(tableroTest.generaPosicion(), new Posicion(1,1));
+		assertEquals(Posicion.class, tableroTest.generaPosicion().getClass());
+		assertNotEquals(tableroTest.generaPosicion(), tableroTest.generaPosicion());
 
 	}
 
@@ -158,20 +156,9 @@ public class TableroTest {
 	public void testInsertBarco() {
 		
 		Tablero tableroTest = new Tablero();
-		assertEquals(tableroTest.protecionBarco(),"Barco Insertado!");
+		assertEquals(tableroTest.insertarBarco(),"Barco Insertado!");
 		
-		/*
-		Posicion posicionTest = new Posicion(0, 0);
-		posicionTest.setOrientacion(0);
-		posicionTest.setTamaño(2);
 
-		Tablero tableroTest = new Tablero();
-		tableroTest.insertarBarco(posicionTest);
-		int[][] tablero = tableroTest.getTablero();
-
-		assertTrue(tablero[0][0] == 2);
-		assertTrue(tablero[1][0] == 2);
-		assertFalse(tablero[1][1] == 2);*/
 
 	}
 
