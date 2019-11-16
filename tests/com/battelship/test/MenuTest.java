@@ -7,7 +7,7 @@ import org.junit.Test;
 import com.battelship.main.Menu;
 
 /*
- * Test que crea un menu principal para empezar a jugar
+ * Test que crea un menu principal para comporbar su correcto funcionamiento
  * 
  */
 
