@@ -58,15 +58,7 @@ public class ManagerIOMock implements IManagerIO {
 		
 	}
 
-	/*
-	 * @Override public int getRandomOrientacion() { int aux = 1;
-	 * 
-	 * if (this.posicionRandomOri < this.arrayRandomOri.length) { aux =
-	 * arrayRandomOri[this.posicionRandomOri]; this.posicionRandomOri++; return aux;
-	 * }
-	 * 
-	 * return aux; }
-	 */
+
 
 	@Override
 	public void out(String data) {

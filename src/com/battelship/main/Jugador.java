@@ -10,8 +10,8 @@ public class Jugador implements IJugador {
 	int tipo;
 	private Tablero propio;
 	public Tablero enemigo;
+	final Constants constants = new Constants();
 	
-
 	public Tablero getPropio() {
 		return propio;
 	}
@@ -24,8 +24,9 @@ public class Jugador implements IJugador {
 		posicionarBarcos();
 	}
 
-
 	public void posicionarBarcos() {
+
+		
 
 		if (tipo == 1) {
 			System.out.println("Jugador: " + nombre + "\nPosiciona tus barcos!");
@@ -75,11 +76,9 @@ public class Jugador implements IJugador {
 
 	}
 
-	
 	public String getNombre() {
 		return nombre;
 	}
-
 
 	public int getTipo() {
 		return tipo;

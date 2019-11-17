@@ -28,4 +28,10 @@ public class Constants {
 						9, 6, 1, 6, 2, 8, 1, 8, 8, 10, 1, 10, 8 };
 		public static final int[] SECUENCIA_JUGADOR_PLAYER_IA = new int[] { 1, 1, 1, 1, 3, 1, 1, 5, 1, 1, 7, 1, 1, 9, 1, 6, 1, 0, 8, 1, 0, 10, 1, 0, 8,
 						8, 0, 10, 8, 0, 1, 1, 1, 3, 1, 5, 1, 7, 1, 9, 6, 1, 8, 1, 10, 1, 8, 8, 10, 8 };
+		
+		
+		//SECUECIA JUGADOR
+		public static final int[] POSICIONA_BARCOS = new int[] { 1, 1, 1, 1, 3, 1, 1, 5, 1, 1, 7, 1, 1, 9, 1, 6, 1, 0, 8, 1, 0, 10, 1,
+						0, 8, 8, 0, 10, 8, 0, };
+
 }

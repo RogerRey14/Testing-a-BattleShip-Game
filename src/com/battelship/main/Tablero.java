@@ -13,6 +13,10 @@ public class Tablero {
 	int numeroBarcosPoscionados = Constants.TOTAL_BARCOS;
 	int[][] tablero = new int[Constants.TAMAÑO_TABLERO][Constants.TAMAÑO_TABLERO];
 
+	public int[][] getTablero() {
+		return tablero;
+	}
+
 	public Tablero(IManagerIO managerIO) {
 		this.managerIO = managerIO;
 		iniciarTablero();
@@ -104,7 +108,7 @@ public class Tablero {
 	 * Hace que alrededor de un barco no pueda haber otro barco cumpliendo así una
 	 * de las reglas del juego
 	 */
-	private void proteccionBarco(Posicion pos) {
+	public void proteccionBarco(Posicion pos) {
 
 		if (pos.getX() + 1 < 10) {
 			if (tablero[pos.getX() + 1][pos.getY()] == 0) {
@@ -152,7 +156,7 @@ public class Tablero {
 	/*
 	 * Inserta un barco en una posicion del tablero
 	 */
-	private void insertarBarco(Posicion pos) {
+	public void insertarBarco(Posicion pos) {
 		for (int i = 0; i < pos.tamaño; i++) {
 			switch (pos.getOrientacion()) {
 			case 0:// ARRIBA
@@ -178,7 +182,7 @@ public class Tablero {
 	/*
 	 * Comprueba si se puede insertar un barco en cierta orientación
 	 */
-	private boolean sePuedeInsertarOrientacion(Posicion pos) {
+	public boolean sePuedeInsertarOrientacion(Posicion pos) {
 		boolean respuesta = false;
 		int correcte = 0;
 		// Comprovacion Margenes tamaño
@@ -225,7 +229,7 @@ public class Tablero {
 	/*
 	 * Recibir la orientación del barco por parte del jugador
 	 */
-	private int leerOrientacion() {
+	public int leerOrientacion() {
 
 		int orientacion = -1;
 		boolean aux = false;
@@ -245,7 +249,7 @@ public class Tablero {
 	/*
 	 * Genera una orientación de barco aleatoria
 	 */
-	private int generarOrientacion() {
+	public int generarOrientacion() {
 
 		int orientacion = -1;
 		boolean aux = false;
@@ -299,7 +303,6 @@ public class Tablero {
 		while (!aux) {
 
 			while (!aux) {
-				// System.out.println("Posicion X (0-10):");
 				int x = managerIO.getRandomInt();
 
 				if (x > 0 && x < 11) {
@@ -309,9 +312,7 @@ public class Tablero {
 			}
 			aux = false;
 			while (!aux) {
-				// System.out.println("Posicion Y (0-10):");
 				int y = managerIO.getRandomInt();
-				// rn.nextInt(10) + 1;
 				if (y > 0 && y < 11) {
 					generado.setY(y - 1);
 					aux = true;
@@ -328,8 +329,12 @@ public class Tablero {
 		Posicion posicion = new Posicion();
 		posicion = leerXY();
 		Tablero aux = randomIA.getPropio();
-
-		if (aux.tablero[posicion.getX()][posicion.getY()] == 1 && this.tablero[posicion.getX()][posicion.getY()] < 2) {
+		
+		boolean pos = aux.tablero[posicion.getX()][posicion.getY()] ==1;
+		boolean pos2 = this.tablero[posicion.getX()][posicion.getY()]< 2;
+		
+		if (aux.tablero[posicion.getX()][posicion.getY()] == 1 
+				&& this.tablero[posicion.getX()][posicion.getY()] < 2) {
 			System.out.println("Barco TOCADO!");
 			this.tablero[posicion.getX()][posicion.getY()] = 2;
 			this.numeroBarcosPoscionados--;

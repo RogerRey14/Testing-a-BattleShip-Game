@@ -41,9 +41,11 @@ public class GameTest {
 	public void testGame() {
 
 		//Opcion 3 del menu -> Exit
+		
 		int[] input = new int[] { 3 };
 		Game.setManager(new ManagerIOMock(input));
 		Game.main(null);
+		new Game();
 		assertTrue(resultado.toString().contains("------Menu Principal------"));
 
 	}
