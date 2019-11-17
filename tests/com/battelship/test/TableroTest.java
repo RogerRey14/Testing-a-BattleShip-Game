@@ -73,10 +73,12 @@ public class TableroTest {
 				+ "| 10|   |   |   |   |   |   |   |   |   |   |\r\n"
 				+ "+---+---+---+---+---+---+---+---+---+---+---+\r\n";
 		assertEquals(esperado, resultado.toString());
+
 	}
 
 	/*
 	 * Test de caja blanca para verificar que el tablero se inicializa correctamente
+	 * Loop Testing
 	 * (All = 0)
 	 */
 	@Test
@@ -86,6 +88,12 @@ public class TableroTest {
 		for (int i = 0; i < 10; i++) {
 			for (int j = 0; j < 10; j++) {
 				assertEquals(tablero.getTablero()[i][j], 0);
+			}
+		}
+		
+		for (int i = 0; i < 10; i++) {
+			for (int j = 0; j < 10; j++) {
+				assertEquals(tablero.getTablero()[j][i], 0);
 			}
 		}
 
@@ -155,6 +163,10 @@ public class TableroTest {
 	/*
 	 * Test de caja blanca para verificar que se crea la proteccion alrededor del
 	 * barco
+	 * Test de caja negra del metodo proteccionBarco
+	 * particiones equivalentes (-inf, 0), [0, 3], [4, inf)
+	 * frontera 0, 3
+	 * limites: -1, 1, 3, 4
 	 */
 	@Test
 	public void testProteccionBarco() {
@@ -201,6 +213,10 @@ public class TableroTest {
 
 	/*
 	 * Test de caja blanca para verificar que se inserta correctamente un barco
+	 *Test de caja negra del metodo insertarBarco
+	 * particiones equivalentes (-inf, 0), [0, 3], [4, inf)
+	 * frontera 0, 3
+	 * limites: -1, 1, 3, 4
 	 */
 
 	@Test
@@ -241,7 +257,12 @@ public class TableroTest {
 	/*
 	 * Test de caja blanca para verificar que se inserta una orientacio
 	 * correctamente
+	 * *Test de caja negra del metodo sePuedeInsertarOrientacion
+	 * particiones equivalentes (-inf, 0), [0, 3], [4, inf)
+	 * frontera 0, 3
+	 * limites: -1, 1, 3, 4
 	 */
+	
 	@Test
 	public void testSePuedeInsertarOrientacion() {
 
@@ -303,31 +324,25 @@ public class TableroTest {
 	}
 
 	/*
-	 * Test de caja negra para verificar que se genera correctamente una
-	 * orientacion
+	 * Test de caja negra para verificar que se genera correctamente una orientacion
 	 *
-	 * Test de caja negra del metodo generarOrientacion
-	 * particiones equivalentes (-inf, 0), [0, 3], [4, inf)
-	 * frontera 0, 3
-	 * limites: -1, 1, 3, 4
+	 * Test de caja negra del metodo generarOrientacion particiones equivalentes
+	 * (-inf, 0), [0, 3], [4, inf) frontera 0, 3 limites: -1, 1, 3, 4
 	 */
 	@Test
 	public void testGenerarOrientacion() {
 
 		int[] empty = new int[] {};
-		int[] input = new int[] { -1, 4, 1,3 };
+		int[] input = new int[] { -1, 4, 1, 3 };
 		Tablero testTablero = new Tablero(new ManagerIOMock(empty, input));
 		assertEquals(testTablero.generarOrientacion(), 1);
 		assertEquals(testTablero.generarOrientacion(), 3);
 	}
 
 	/*
-	 * Test de caja negra para verificar que se lee correctamente una Posicion
-	 * (x,y)
-	 * Test de caja negra del metodo LeerXY
-	 * particiones equivalentes (-inf, 1), [1, 10], [10, inf)
-	 * frontera 1, 10
-	 * limites: 0, 11, -1, 11
+	 * Test de caja negra para verificar que se lee correctamente una Posicion (x,y)
+	 * Test de caja negra del metodo LeerXY particiones equivalentes (-inf, 1), [1,
+	 * 10], [10, inf) frontera 1, 10 limites: 0, 11, -1, 11
 	 */
 	@Test
 	public void testLeerXY() {
@@ -344,11 +359,8 @@ public class TableroTest {
 
 	/*
 	 * Test de caja negra para verificar que se genera correctamente una Posicion
-	 * (x,y)
-	 * 	Test de caja negra del metodo GenerarXY
-	 * particiones equivalentes (-inf, 1), [1, 10], [10, inf)
-	 * frontera 1, 10
-	 * limites: 0, 11, -1, 11
+	 * (x,y) Test de caja negra del metodo GenerarXY particiones equivalentes (-inf,
+	 * 1), [1, 10], [10, inf) frontera 1, 10 limites: 0, 11, -1, 11
 	 */
 	@Test
 	public void testGenerarXY() {
@@ -370,7 +382,7 @@ public class TableroTest {
 	@Test
 	public void testAtacar() {
 
-		//CONDITION COVERAGE 
+		// CONDITION COVERAGE
 		// 2,1 TOCADO TRUE TRUE
 		// 2,1,2,1 TOCADO TRUE False
 		// 1,2 AGUA FALSE TRUE
@@ -392,7 +404,7 @@ public class TableroTest {
 		testTablero.atacar(testJugador);
 		// 1,2,1,2 FALSE FALSE
 		testTablero.atacar(testJugador);
-
+		testTablero.mostrarTablero();
 	}
 
 	/*
@@ -402,7 +414,7 @@ public class TableroTest {
 	public void testAtacarRandom() {
 
 		int[] empty = new int[] {};
-		//CONDITION COVERAGE
+		// CONDITION COVERAGE
 		// 2,1 TOCADO TRUE TRUE
 		// 2,1,2,1 TOCADO TRUE False
 		// 1,2 AGUA FALSE TRUE
@@ -424,7 +436,7 @@ public class TableroTest {
 		testTablero.atacarRandom(testJugador);
 		// 1,2,1,2 FALSE FALSE
 		testTablero.atacarRandom(testJugador);
-
+		testTablero.mostrarTablero();
 	}
 
 }
