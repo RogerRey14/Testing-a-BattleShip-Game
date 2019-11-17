@@ -8,7 +8,6 @@ import java.io.PrintStream;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.jupiter.api.AfterEach;
 
 import com.battelship.main.Jugador;
 import com.battelship.main.Menu;
@@ -21,7 +20,7 @@ import com.battelship.utils.Constants;
 
 public class JugadorTest {
 
-	private PrintStream systemOutOriginal;
+
 	public ByteArrayOutputStream resultado;
 
 	/*
@@ -30,7 +29,7 @@ public class JugadorTest {
 	 */
 	@Before
 	public void beforeAll() {
-		systemOutOriginal = System.out;
+
 		resultado = new ByteArrayOutputStream();
 		System.setOut(new PrintStream(resultado));
 	}

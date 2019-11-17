@@ -1,11 +1,6 @@
 package com.battelship.test;
 
-import com.battelship.main.*;
-import com.battelship.mocks.ManagerIOMock;
-import com.battelship.utils.Constants;
-
 import static org.junit.Assert.assertEquals;
-
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -15,6 +10,12 @@ import java.io.PrintStream;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import com.battelship.main.Jugador;
+import com.battelship.main.Posicion;
+import com.battelship.main.Tablero;
+import com.battelship.mocks.ManagerIOMock;
+import com.battelship.utils.Constants;
 
 public class TableroTest {
 	private PrintStream systemOutOriginal;
@@ -75,7 +76,8 @@ public class TableroTest {
 	}
 
 	/*
-	 * Test de caja blanca para verificar que el tablero se inicializa correctamente (All = 0)
+	 * Test de caja blanca para verificar que el tablero se inicializa correctamente
+	 * (All = 0)
 	 */
 	@Test
 	public void testIniciarTablero() {
@@ -88,7 +90,7 @@ public class TableroTest {
 		}
 
 	}
-	
+
 	/*
 	 * Test de caja blanca para verificar que se inserta una posicion correctamente
 	 */
@@ -132,7 +134,7 @@ public class TableroTest {
 	}
 
 	/*
-	 * Test de caja blanca para verificar que se genera una posicion correcta 
+	 * Test de caja blanca para verificar que se genera una posicion correcta
 	 */
 	@Test
 	public void testInsertPosicionRandom() {
@@ -151,7 +153,8 @@ public class TableroTest {
 	}
 
 	/*
-	 * Test de caja blanca para verificar que se crea la proteccion alrededor del barco
+	 * Test de caja blanca para verificar que se crea la proteccion alrededor del
+	 * barco
 	 */
 	@Test
 	public void testProteccionBarco() {
@@ -199,7 +202,7 @@ public class TableroTest {
 	/*
 	 * Test de caja blanca para verificar que se inserta correctamente un barco
 	 */
-	
+
 	@Test
 	public void testInsertarBarco() {
 
@@ -236,7 +239,8 @@ public class TableroTest {
 	}
 
 	/*
-	 * Test de caja blanca para verificar que se inserta una orientacio correctamente
+	 * Test de caja blanca para verificar que se inserta una orientacio
+	 * correctamente
 	 */
 	@Test
 	public void testSePuedeInsertarOrientacion() {
@@ -297,21 +301,33 @@ public class TableroTest {
 		assertEquals(testTablero.leerOrientacion(), 1);
 
 	}
+
 	/*
-	 * Test de caja blanca para verificar que se genera correctamente una orientacion
+	 * Test de caja negra para verificar que se genera correctamente una
+	 * orientacion
+	 *
+	 * Test de caja negra del metodo generarOrientacion
+	 * particiones equivalentes (-inf, 0), [0, 3], [4, inf)
+	 * frontera 0, 3
+	 * limites: -1, 1, 3, 4
 	 */
 	@Test
 	public void testGenerarOrientacion() {
 
 		int[] empty = new int[] {};
-		int[] input = new int[] { -1, 4, 1 };
+		int[] input = new int[] { -1, 4, 1,3 };
 		Tablero testTablero = new Tablero(new ManagerIOMock(empty, input));
 		assertEquals(testTablero.generarOrientacion(), 1);
-
+		assertEquals(testTablero.generarOrientacion(), 3);
 	}
 
 	/*
-	 * Test de caja blanca para verificar que se lee correctamente una Posicion (x,y)
+	 * Test de caja negra para verificar que se lee correctamente una Posicion
+	 * (x,y)
+	 * Test de caja negra del metodo LeerXY
+	 * particiones equivalentes (-inf, 1), [1, 10], [10, inf)
+	 * frontera 1, 10
+	 * limites: 0, 11, -1, 11
 	 */
 	@Test
 	public void testLeerXY() {
@@ -327,7 +343,12 @@ public class TableroTest {
 	}
 
 	/*
-	 * Test de caja blanca para verificar que se genera correctamente una Posicion (x,y)
+	 * Test de caja negra para verificar que se genera correctamente una Posicion
+	 * (x,y)
+	 * 	Test de caja negra del metodo GenerarXY
+	 * particiones equivalentes (-inf, 1), [1, 10], [10, inf)
+	 * frontera 1, 10
+	 * limites: 0, 11, -1, 11
 	 */
 	@Test
 	public void testGenerarXY() {
@@ -342,14 +363,14 @@ public class TableroTest {
 		assertEquals(expectedPosicion.getY(), testPosicion.getY());
 
 	}
-	
+
 	/*
-	 * Test de caja blanca para verificar que se ataca correctamente 
+	 * Test de caja blanca para verificar que se ataca correctamente
 	 */
 	@Test
 	public void testAtacar() {
 
-		int[] empty = new int[] {};
+		//CONDITION COVERAGE 
 		// 2,1 TOCADO TRUE TRUE
 		// 2,1,2,1 TOCADO TRUE False
 		// 1,2 AGUA FALSE TRUE
@@ -373,7 +394,7 @@ public class TableroTest {
 		testTablero.atacar(testJugador);
 
 	}
-	
+
 	/*
 	 * Test de caja blanca para verificar que se ataca aleatoriamente Correctamente!
 	 */
@@ -381,6 +402,7 @@ public class TableroTest {
 	public void testAtacarRandom() {
 
 		int[] empty = new int[] {};
+		//CONDITION COVERAGE
 		// 2,1 TOCADO TRUE TRUE
 		// 2,1,2,1 TOCADO TRUE False
 		// 1,2 AGUA FALSE TRUE
@@ -389,8 +411,8 @@ public class TableroTest {
 
 		int[] input = new int[] { 2, 1, 2, 1, 1, 2, 6, 8, 1, 2, 1, 2 };
 
-		Jugador testJugador = new Jugador(2, "Random", new ManagerIOMock(empty,Constants.POSICIONA_BARCOS));
-		Tablero testTablero = new Tablero(new ManagerIOMock(empty,input));
+		Jugador testJugador = new Jugador(2, "Random", new ManagerIOMock(empty, Constants.POSICIONA_BARCOS));
+		Tablero testTablero = new Tablero(new ManagerIOMock(empty, input));
 
 		// 2,1 TOCADO TRUE TRUE
 		testTablero.atacarRandom(testJugador);
