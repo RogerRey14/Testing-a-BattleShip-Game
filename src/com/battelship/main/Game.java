@@ -1,7 +1,7 @@
 package com.battelship.main;
 
 import com.battelship.main.intefaces.IManagerIO;
-import com.battelship.mocks.ManagerIOMock;
+
 
 public class Game {
 
