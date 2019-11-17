@@ -1,51 +1,43 @@
-//package com.battelship.main.TDD;
+//package com.battelship.TDD;
 //
-//import com.battelship.main.intefaces.IManagerIO;
-//
-//
-//
-//public class Partida   {
-//
-//	IManagerIO managerIO;
+//public class Partida {
 //
 //	Jugador userPlayer;
 //	Jugador randomIA;
-//
 //	boolean finalJuego = false;
 //	boolean turnoJugador = true;
 //
-//	public Partida(IManagerIO managerIO) {
+//	public Partida() {
 //
-//		this.userPlayer = new Jugador(1, "Jugador", managerIO);
-//		this.randomIA = new Jugador(2, "RandomIA", managerIO);
-//		this.empezarPartida();
+//		this.userPlayer = new Jugador(1, "Jugador");
+//		this.randomIA = new Jugador(2, "RandomIA");
 //
 //	}
 //
-//	public void printGanador() {
-//		if (userPlayer.ganador()) {
-//			System.out.println("Ganador de la partida " + userPlayer.getNombre() + "!!!");
-//		} else {
-//			System.out.println("Ganador de la partida " + randomIA.getNombre() + "!!!");
-//		}
+//	public Jugador getUserPlayer() {
+//		return userPlayer;
 //	}
 //
-//	public void empezarPartida() {
-//
-//		while (!finalJuego) {
-//
-//			if (turnoJugador) {
-//				userPlayer.atacar(randomIA);
-//				turnoJugador = false;
-//			} else {
-//				randomIA.atacar(userPlayer);
-//				turnoJugador = true;
-//			}
-//
-//			if (userPlayer.ganador() || randomIA.ganador()) {
-//				finalJuego = true;
-//			}
-//		}
-//		printGanador();
+//	public Jugador getRandomIA() {
+//		return randomIA;
 //	}
+//
+//	public boolean isFinalJuego() {
+//		return finalJuego;
+//	}
+//
+//	public boolean isTurnoJugador() {
+//		return turnoJugador;
+//	}
+//
+//	public String empezarPartida() {
+//		return "Partida Empezada!";
+//
+//	}
+//
+//	public String mostrarGanador() {
+//		return userPlayer.getNombre();
+//
+//	}
+//
 //}
