@@ -1,9 +1,5 @@
 package com.battelship.test;
 
-import com.battelship.main.*;
-import com.battelship.mocks.ManagerIOMock;
-import com.battelship.utils.Constants;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -15,6 +11,8 @@ import java.util.Scanner;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import com.battelship.main.ManagerIO;
 
 public class ManagerIOTest {
 	private PrintStream systemOutOriginal;
@@ -41,7 +39,7 @@ public class ManagerIOTest {
 	}
 
 	/*
-	 * Funcion
+	 * Test Funcion que printa un Integer en el buffer de salida
 	 */
 	@Test
 	public void testManagerIOOutInteger() {
@@ -51,7 +49,7 @@ public class ManagerIOTest {
 	}
 	
 	/*
-	 * 
+	 * Test Funcion que printa un String en el buffer de salida
 	 */
 	@Test
 	public void testManagerIOOutString() {
@@ -61,7 +59,7 @@ public class ManagerIOTest {
 	}
 	
 	/*
-	 * 
+	 * Test Funcion que genera numero aleatorio entre 0-10
 	 */
 	@Test
 	public void testManagerIOGetRandomInt() {
@@ -76,7 +74,7 @@ public class ManagerIOTest {
 	}
 	
 	/*
-	 * 
+	 * Test Funcion que genera orientacion aleatoria entre 0-4
 	 */
 	@Test
 	public void testManagerIOGetRandomOrientacion() {
@@ -90,7 +88,9 @@ public class ManagerIOTest {
 		
 	}
 	
-	
+	/*
+	 * Test Funcion lee la entrada por teclado de un valor Integer
+	 */
 	@Test
 	public void testManagerIOinInt() {
 		

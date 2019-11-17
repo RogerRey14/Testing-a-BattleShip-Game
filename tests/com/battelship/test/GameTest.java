@@ -1,6 +1,5 @@
 package com.battelship.test;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.io.ByteArrayOutputStream;
@@ -8,11 +7,8 @@ import java.io.PrintStream;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.jupiter.api.AfterEach;
 
 import com.battelship.main.Game;
-import com.battelship.main.Jugador;
-import com.battelship.main.Menu;
 import com.battelship.mocks.ManagerIOMock;
 
 /*
@@ -20,7 +16,6 @@ import com.battelship.mocks.ManagerIOMock;
  */
 public class GameTest {
 
-	private PrintStream systemOutOriginal;
 	public ByteArrayOutputStream resultado;
 
 	/*
@@ -29,7 +24,7 @@ public class GameTest {
 	 */
 	@Before
 	public void beforeAll() {
-		systemOutOriginal = System.out;
+
 		resultado = new ByteArrayOutputStream();
 		System.setOut(new PrintStream(resultado));
 	}
@@ -40,8 +35,8 @@ public class GameTest {
 	@Test
 	public void testGame() {
 
-		//Opcion 3 del menu -> Exit
-		
+		// Opcion 3 del menu -> Exit
+
 		int[] input = new int[] { 3 };
 		Game.setManager(new ManagerIOMock(input));
 		Game.main(null);

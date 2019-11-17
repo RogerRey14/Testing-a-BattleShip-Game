@@ -75,8 +75,7 @@ public class TableroTest {
 	}
 
 	/*
-	 * Test de caja blanca para verificar que el tablero se muestra correctamente al
-	 * iniciarse
+	 * Test de caja blanca para verificar que el tablero se inicializa correctamente (All = 0)
 	 */
 	@Test
 	public void testIniciarTablero() {
@@ -89,7 +88,10 @@ public class TableroTest {
 		}
 
 	}
-
+	
+	/*
+	 * Test de caja blanca para verificar que se inserta una posicion correctamente
+	 */
 	@Test
 	public void testInsertPosicion() {
 
@@ -105,6 +107,9 @@ public class TableroTest {
 		assertEquals(testTablero.getTablero()[1][1], 4);
 	}
 
+	/*
+	 * Test de caja blanca para verificar que se inserta una posicion incorrecta!
+	 */
 	@Test
 	public void testInsertPosicionKO() {
 
@@ -126,6 +131,9 @@ public class TableroTest {
 
 	}
 
+	/*
+	 * Test de caja blanca para verificar que se genera una posicion correcta 
+	 */
 	@Test
 	public void testInsertPosicionRandom() {
 
@@ -142,6 +150,9 @@ public class TableroTest {
 		assertEquals(testTablero.getTablero()[1][1], 4);
 	}
 
+	/*
+	 * Test de caja blanca para verificar que se crea la proteccion alrededor del barco
+	 */
 	@Test
 	public void testProteccionBarco() {
 
@@ -185,6 +196,10 @@ public class TableroTest {
 
 	}
 
+	/*
+	 * Test de caja blanca para verificar que se inserta correctamente un barco
+	 */
+	
 	@Test
 	public void testInsertarBarco() {
 
@@ -220,6 +235,9 @@ public class TableroTest {
 
 	}
 
+	/*
+	 * Test de caja blanca para verificar que se inserta una orientacio correctamente
+	 */
 	@Test
 	public void testSePuedeInsertarOrientacion() {
 
@@ -268,6 +286,9 @@ public class TableroTest {
 
 	}
 
+	/*
+	 * Test de caja blanca para verificar que se lee correctamente una orientacion
+	 */
 	@Test
 	public void testLeerOrientacion() {
 
@@ -276,7 +297,9 @@ public class TableroTest {
 		assertEquals(testTablero.leerOrientacion(), 1);
 
 	}
-
+	/*
+	 * Test de caja blanca para verificar que se genera correctamente una orientacion
+	 */
 	@Test
 	public void testGenerarOrientacion() {
 
@@ -287,6 +310,9 @@ public class TableroTest {
 
 	}
 
+	/*
+	 * Test de caja blanca para verificar que se lee correctamente una Posicion (x,y)
+	 */
 	@Test
 	public void testLeerXY() {
 
@@ -300,6 +326,9 @@ public class TableroTest {
 
 	}
 
+	/*
+	 * Test de caja blanca para verificar que se genera correctamente una Posicion (x,y)
+	 */
 	@Test
 	public void testGenerarXY() {
 
@@ -313,7 +342,10 @@ public class TableroTest {
 		assertEquals(expectedPosicion.getY(), testPosicion.getY());
 
 	}
-
+	
+	/*
+	 * Test de caja blanca para verificar que se ataca correctamente 
+	 */
 	@Test
 	public void testAtacar() {
 
@@ -342,6 +374,9 @@ public class TableroTest {
 
 	}
 	
+	/*
+	 * Test de caja blanca para verificar que se ataca aleatoriamente Correctamente!
+	 */
 	@Test
 	public void testAtacarRandom() {
 
