@@ -4,7 +4,6 @@ import com.battelship.main.intefaces.IJugador;
 import com.battelship.main.intefaces.IManagerIO;
 import com.battelship.utils.Constants;
 
-
 /* 
  * Clase que gestiona el tablero del juego
  */
@@ -329,12 +328,8 @@ public class Tablero {
 		Posicion posicion = new Posicion();
 		posicion = leerXY();
 		Tablero aux = randomIA.getPropio();
-		
-		boolean pos = aux.tablero[posicion.getX()][posicion.getY()] ==1;
-		boolean pos2 = this.tablero[posicion.getX()][posicion.getY()]< 2;
-		
-		if (aux.tablero[posicion.getX()][posicion.getY()] == 1 
-				&& this.tablero[posicion.getX()][posicion.getY()] < 2) {
+
+		if (aux.tablero[posicion.getX()][posicion.getY()] == 1 && this.tablero[posicion.getX()][posicion.getY()] < 2) {
 			System.out.println("Barco TOCADO!");
 			this.tablero[posicion.getX()][posicion.getY()] = 2;
 			this.numeroBarcosPoscionados--;
