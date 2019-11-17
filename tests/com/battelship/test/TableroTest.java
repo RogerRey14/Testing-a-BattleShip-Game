@@ -1,6 +1,8 @@
 package com.battelship.test;
 import com.battelship.main.*;
-import com.battelship.mocks.*;
+
+import mocks.ManagerIOMock;
+
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
