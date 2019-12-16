@@ -1,0 +1,7 @@
+6
+0 Derecha
+1 Abajo
+2 Arriba
+3 Izquierda
+24 No
+-2 No
